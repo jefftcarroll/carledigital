@@ -1,0 +1,15 @@
+h2 {
+  font-size: 2em;
+}
+
+h3 {
+  font-size: 1.6em;
+}
+
+.cell {
+  padding: 28px;
+}
+
+.cell-heading {
+  padding: 0 28px;
+}
