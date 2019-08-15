@@ -1,9 +1,25 @@
-h2 {
+h2.plan {
   font-size: 2em;
+  font-weight: 500;
+  margin: 8px 0;
 }
 
-h3 {
-  font-size: 1.6em;
+.cell-heading h3 {
+  font-size: 1.4em;
+  font-weight: 500;
+  margin: 16px 0;
+}
+
+h3.hmo {
+  font-size: 1.4em;
+  font-weight: 500;
+  margin: 16px 0;
+}
+
+h3.provider {
+  font-size: 1.2em;
+  font-weight: 500;
+  margin: 8px 0;
 }
 
 .cell {
@@ -12,4 +28,21 @@ h3 {
 
 .cell-heading {
   padding: 0 28px;
+}
+
+.flex-container {
+  display: flex;
+}
+
+.flex-container .left {
+  width: 50%;
+  text-align: left;
+}
+.flex-container .right {
+  width: 50%;
+  text-align: right;
+}
+
+.hmo.price {
+  color: #572c80;
 }

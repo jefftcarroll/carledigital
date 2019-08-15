@@ -7,6 +7,7 @@ import queryString from 'query-string'
 
 import './styles.css'
 
+import Theme from '../theme'
 import Plan from './plan'
 
 import plans from '../data/plans.json'
@@ -19,22 +20,38 @@ const useStyles = makeStyles(theme => ({
     position: 'relative',
     backgroundColor: theme.palette.background.paper,
   },
-  button: {
-    margin: theme.spacing(1),
+  topButton: {
+    marginTop: theme.spacing(3),
+    marginBottom: theme.spacing(3),
+    paddingTop: theme.spacing(1.5),
+    paddingBottom: theme.spacing(1.5),
+    boxSizing: 'border-box',
+    textTransform: 'none',
   },
+  button: {
+    marginTop: theme.spacing(3),
+    marginBottom: theme.spacing(3),
+    textTransform: 'none',
+  },
+
   listHeadingContainer: {
     position: 'fixed',
     top: 0,
     zIndex: 100,
   },
   listItemContainer: {
-    marginTop: 40,
+    marginTop: theme.spacing(13),
     width: '100%',
     position: 'relative',
     zIndex: 1,
   },
   topRow: {
     border: '1px solid #e2e2e2',
+  },
+  TopButtonCells: {
+    borderTop: '1px solid #e2e2e2',
+    borderLeft: '1px solid #e2e2e2',
+    borderRight: '1px solid #e2e2e2',
   },
   featureLeftColumn: {
     borderBottom: '1px solid #e2e2e2',
@@ -45,7 +62,7 @@ const useStyles = makeStyles(theme => ({
   },
   featureRightColumn: {
     borderBottom: '1px solid #e2e2e2',
-    borderRight: '1px solid #e2e2e2',
+    borderLeft: '1px solid #e2e2e2',
   },
 }))
 
@@ -67,50 +84,52 @@ export default function PlanSelect({}) {
   }
 
   return (
-    <div className={classes.root}>
-      <Grid
-        container
-        direction="row"
-        justify="space-evenly"
-        alignItems="center"
-        className={classes.listHeadingContainer}
-      >
-        {filterPlans(plans).map((json, i) => (
-          <Grid
-            item
-            key={json.ID}
-            xs={12}
-            sm={6}
-            md={4}
-            className="cell-heading"
-          >
-            <Button
-              variant="contained"
-              color="primary"
-              fullWidth
-              className={classes.primaryButton}
-            >
-              Choose {json.NAME}
-            </Button>
-          </Grid>
-        ))}
-      </Grid>
-
-      <div className={classes.listItemContainer}>
+    <Theme>
+      <div className={classes.root}>
         <Grid
           container
           direction="row"
           justify="space-evenly"
           alignItems="center"
-          className={classes.listItems}
+          className={classes.listHeadingContainer}
         >
           {filterPlans(plans).map((json, i) => (
-            <Grid item key={json.name} xs={12} sm={6} md={4}>
-              <Plan {...json} classes={classes} column={getColumnName(i)} />
+            <Grid
+              item
+              key={json.ID}
+              xs={12}
+              sm={6}
+              md={4}
+              className={`${classes.TopButtonCells} cell-heading`}
+            >
+              <Button
+                variant="contained"
+                color="primary"
+                fullWidth
+                className={classes.topButton}
+              >
+                Choose {json.NAME}
+              </Button>
             </Grid>
           ))}
         </Grid>
+
+        <div className={classes.listItemContainer}>
+          <Grid
+            container
+            direction="row"
+            justify="space-evenly"
+            alignItems="center"
+            className={classes.listItems}
+          >
+            {filterPlans(plans).map((json, i) => (
+              <Grid item key={json.name} xs={12} sm={6} md={4}>
+                <Plan {...json} classes={classes} column={getColumnName(i)} />
+              </Grid>
+            ))}
+          </Grid>
+        </div>
       </div>
-    </div>
+    </Theme>
   )
 }

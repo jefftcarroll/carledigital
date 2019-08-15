@@ -1,0 +1,88 @@
+html,
+body,
+div,
+header,
+section,
+main,
+footer,
+h1,
+h2,
+h3,
+h4,
+p,
+input,
+button,
+input,
+label {
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  font-family: 'Museo-Sans-100', Arial, sans;
+}
+
+section {
+  height: auto;
+}
+
+.hover {
+  -o-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+}
+
+h1 {
+  color: #fff;
+  font-family: 'Museo-Sans-100', Arial, sans;
+  font-size: 3em;
+  line-height: 1.25em;
+}
+
+h2 {
+  color: #090012;
+  font-family: 'Museo-Sans-100', Arial, sans;
+  font-size: 2.5em;
+  margin-bottom: 0.4925em;
+}
+
+h3 {
+  font-family: 'Museo-Sans-100', Arial, sans;
+  margin: 0;
+  padding: 0;
+}
+
+p.small-header {
+  color: #6b6777;
+  font-family: 'Museo-Sans-100', Arial, sans;
+  font-size: 1em;
+  margin-bottom: 1.0625em;
+}
+
+p.intro-text {
+  color: #6b6777;
+  font-family: 'Museo-Sans-100', Arial, sans;
+  font-size: 1.25em;
+  line-height: 1.65em;
+}
+
+strong {
+  font-family: 'Museo-Sans-500', Arial, sans;
+}
+
+div.border {
+  border-top: 1px solid #e7e7e7;
+}
+
+a {
+  text-decoration: underline;
+  cursor: pointer;
+  color: #572c80;
+}
+
+a:visited {
+  color: #572c80;
+}

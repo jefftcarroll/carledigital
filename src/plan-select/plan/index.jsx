@@ -5,13 +5,26 @@ import Button from '@material-ui/core/Button'
 import { capitalize } from '../../modules/string'
 
 export default function Plan(props) {
+  function pcpovLabel(key, value, i) {
+    if (key === 'PCP_t1' || key === 'PCP_t2') {
+      return `tier ${i}`
+    } else if (key === 'PCP_oon') {
+      return 'out-of-network'
+    }
+  }
+
   return (
     <div>
       <div className={props.classes.topRow + ' cell'}>
-        <h2>{props.NAME}</h2>
+        <h2 className="plan">{props.NAME}</h2>
 
-        <div>
-          {props.SUBNAME} ${props.PREMIUM}/month
+        <div className="flex-container">
+          <div className="left">
+            <h3 className="hmo">{props.SUBNAME}</h3>
+          </div>
+          <div className="right">
+            <h3 className="hmo price">${props.PREMIUM}/month</h3>
+          </div>
         </div>
 
         <div>
@@ -40,7 +53,9 @@ export default function Plan(props) {
             props.classes['feature' + capitalize(props.column) + 'Column']
           } cell`}
         >
-          <a href="#">Find a Provider</a> in {props.NAME}
+          <h3>
+            <a href="#">Find a Provider</a> in {props.NAME}
+          </h3>
         </div>
       </div>
 
@@ -55,6 +70,79 @@ export default function Plan(props) {
           } cell`}
         >
           $0 deductible
+        </div>
+      </div>
+
+      <div className="cell-heading">
+        <h3>
+          {props.column === 'left' ? 'Prescription Drugs Deductible' : ''}&nbsp;
+        </h3>
+      </div>
+
+      <div>
+        <div
+          className={`${
+            props.classes['feature' + capitalize(props.column) + 'Column']
+          } cell`}
+        >
+          {props.RXDEDUCTIBLE} deductible
+        </div>
+      </div>
+
+      <div className="cell-heading">
+        <h3>{props.column === 'left' ? 'Yearly Limit' : ''}&nbsp;</h3>
+      </div>
+
+      <div>
+        <div
+          className={`${
+            props.classes['feature' + capitalize(props.column) + 'Column']
+          } cell`}
+        >
+          {['LIMIT_t1', 'LIMIT_t2', 'LIMIT_t3']
+            .reduce((acc, key) => {
+              if (props[key] && props[key].length > 0) acc.push(props[key])
+              return acc
+            }, [])
+            .map(limit => (
+              <p>{limit}</p>
+            ))}
+        </div>
+      </div>
+
+      <div className="cell-heading">
+        <h3>
+          {props.column === 'left' ? 'Primary Care Physician Office Visit' : ''}
+          &nbsp;
+        </h3>
+      </div>
+
+      <div>
+        <div
+          className={`${
+            props.classes['feature' + capitalize(props.column) + 'Column']
+          } cell`}
+        >
+          {['PCP_t1', 'PCP_t2', 'PCP_oon']
+            .reduce((acc, key, i) => {
+              if (props[key] && props[key].length > 0) {
+                acc.push({
+                  limit: props[key],
+                  label: pcpovLabel(key, props[key], i),
+                })
+              } else {
+                acc.push({
+                  limit: '',
+                  label: '',
+                })
+              }
+              return acc
+            }, [])
+            .map(item => (
+              <p>
+                {item.limit} {item.label} &nbsp;
+              </p>
+            ))}
         </div>
       </div>
 
