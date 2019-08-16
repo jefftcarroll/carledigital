@@ -8,7 +8,8 @@ import queryString from 'query-string'
 import './styles.css'
 
 import Theme from '../theme'
-import Plan from './plan'
+import PlanBasics from './plan/basics'
+import PlanBenefits from './plan/benefits'
 
 import plans from '../data/plans.json'
 
@@ -124,7 +125,31 @@ export default function PlanSelect({}) {
           >
             {filterPlans(plans).map((json, i) => (
               <Grid item key={json.name} xs={12} sm={6} md={4}>
-                <Plan {...json} classes={classes} column={getColumnName(i)} />
+                <PlanBasics
+                  {...json}
+                  classes={classes}
+                  column={getColumnName(i)}
+                />
+              </Grid>
+            ))}
+          </Grid>
+
+          <h2>Covered Medical and Hospital Benefits</h2>
+
+          <Grid
+            container
+            direction="row"
+            justify="space-evenly"
+            alignItems="center"
+            className={classes.listItems}
+          >
+            {filterPlans(plans).map((json, i) => (
+              <Grid item key={json.name} xs={12} sm={6} md={4}>
+                <PlanBenefits
+                  {...json}
+                  classes={classes}
+                  column={getColumnName(i)}
+                />
               </Grid>
             ))}
           </Grid>
