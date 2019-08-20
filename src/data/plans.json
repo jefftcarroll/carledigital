@@ -11,7 +11,7 @@
     "DRXLINK": "https://medicare.healthalliance.org/plan-details?plan=H1463-023-000",
     "RX": "TRUE",
     "SOB": "Med-sob19CAR1-0818web.pdf",
-    "EOC": "EOC-H1463023000.pdf",
+    "EOC/SBC": "EOC-H1463023000.pdf",
     "ANOC": "",
     "PREMIUM": 0,
     "MEDDEDUCTIBLE": "$0",
@@ -48,10 +48,16 @@
     "OUTHOSP_t1": "$100",
     "OUTHOSP_t2": "",
     "OUTHOSP_oon": "",
-    "INHOSP_t1": "$200/Day (1-8), $0 (Day 9+)",
+    "INHOSP_t1": [
+      "$200/Day (1-8)",
+      "$0 (Day 9+)"
+    ],
     "INHOSP_t2": "",
     "INHOSP_oon": "",
-    "SNF_t1": "$0/Day (1-20), $178 (Day 21-100)",
+    "SNF_t1": [
+      "$0/Day (1-20)",
+      "$178 (Day 21-100)"
+    ],
     "SNF_t2": "",
     "SNF_oon": "",
     "RXDEDUCTIBLE": "$0",
@@ -84,7 +90,7 @@
     "DRXLINK": "https://medicare.healthalliance.org/plan-details?plan=H1463-024-000",
     "RX": "TRUE",
     "SOB": "Med-sob19CAR2_3-0818web.pdf",
-    "EOC": "EOC-H1463024000.pdf",
+    "EOC/SBC": "EOC-H1463024000.pdf",
     "ANOC": "",
     "PREMIUM": 28,
     "MEDDEDUCTIBLE": "$0",
@@ -121,11 +127,23 @@
     "OUTHOSP_t1": "$100",
     "OUTHOSP_t2": "25%",
     "OUTHOSP_oon": "",
-    "INHOSP_t1": "$200/Day (1-8), $0 (Day 9+)",
-    "INHOSP_t2": "$250/Day (1-8), $0 (Day 9+)",
+    "INHOSP_t1": [
+      "$200/Day (1-8)",
+      "$0 (Day 9+)"
+    ],
+    "INHOSP_t2": [
+      "$250/Day (1-8)",
+      "$0 (Day 9+)"
+    ],
     "INHOSP_oon": "",
-    "SNF_t1": "$0/Day (1-20), $178 (Day 21-100)",
-    "SNF_t2": "$0/Day (1-20), $178 (Day 21-100)",
+    "SNF_t1": [
+      "$0/Day (1-20)",
+      "$178 (Day 21-100)"
+    ],
+    "SNF_t2": [
+      "$0/Day (1-20)",
+      "$178 (Day 21-100)"
+    ],
     "SNF_oon": "",
     "RXDEDUCTIBLE": "$0",
     "FORMULARY": "med-formularyMW-2019.pdf",
@@ -157,7 +175,7 @@
     "DRXLINK": "https://medicare.healthalliance.org/plan-details?plan=H1463-025-000",
     "RX": "TRUE",
     "SOB": "Med-sob19CAR2_3-0818web.pdf",
-    "EOC": "EOC-H1463025000.pdf",
+    "EOC/SBC": "EOC-H1463025000.pdf",
     "ANOC": "",
     "PREMIUM": 48,
     "MEDDEDUCTIBLE": "$0",
@@ -194,12 +212,30 @@
     "OUTHOSP_t1": "$100",
     "OUTHOSP_t2": "25%",
     "OUTHOSP_oon": "50%",
-    "INHOSP_t1": "$200/Day (1-8), $0 (Day 9+)",
-    "INHOSP_t2": "$250/Day (1-8), $0 (Day 9+)",
-    "INHOSP_oon": "$600/Day (1-4), $0 (Day 5-90)",
-    "SNF_t1": "$0/Day (1-20), $178 (Day 21-100)",
-    "SNF_t2": "$0/Day (1-20), $178 (Day 21-100)",
-    "SNF_oon": "$100/Day (1-20), $200 (Day 21-100)",
+    "INHOSP_t1": [
+      "$200/Day (1-8)",
+      "$0 (Day 9+)"
+    ],
+    "INHOSP_t2": [
+      "$250/Day (1-8)",
+      "$0 (Day 9+)"
+    ],
+    "INHOSP_oon": [
+      "$600/Day (1-4)",
+      "$0 (Day 5-90)"
+    ],
+    "SNF_t1": [
+      "$0/Day (1-20)",
+      "$178 (Day 21-100)"
+    ],
+    "SNF_t2": [
+      "$0/Day (1-20)",
+      "$178 (Day 21-100)"
+    ],
+    "SNF_oon": [
+      "$100/Day (1-20)",
+      "$200 (Day 21-100)"
+    ],
     "RXDEDUCTIBLE": "$0",
     "FORMULARY": "med-formularyMW-2019.pdf",
     "RXDIRECTORY": "med-pharmd19ILIN-0818web.pdf",
@@ -230,7 +266,7 @@
     "DRXLINK": "https://medicare.healthalliance.org/plan-details?plan=H1463-032-000",
     "RX": "TRUE",
     "SOB": "Med-sob19RIV1-0818web.pdf",
-    "EOC": "EOC-H1463032000.pdf",
+    "EOC/SBC": "EOC-H1463032000.pdf",
     "ANOC": "",
     "PREMIUM": 0,
     "MEDDEDUCTIBLE": "$0",
@@ -267,10 +303,16 @@
     "OUTHOSP_t1": "$100",
     "OUTHOSP_t2": "",
     "OUTHOSP_oon": "",
-    "INHOSP_t1": "$225/Day (1-8), $0 (Day 9+)",
+    "INHOSP_t1": [
+      "$225/Day (1-8)",
+      "$0 (Day 9+)"
+    ],
     "INHOSP_t2": "",
     "INHOSP_oon": "",
-    "SNF_t1": "$0/Day (1-20), $178 (Day 21-100)",
+    "SNF_t1": [
+      "$0/Day (1-20)",
+      "$178 (Day 21-100)"
+    ],
     "SNF_t2": "",
     "SNF_oon": "",
     "RXDEDUCTIBLE": "$0",
@@ -283,7 +325,7 @@
     "RX_t4": "50%",
     "RX_t5": "33%",
     "VV": 1,
-    "BEFIT": 1,
+    "BEFIT": 0,
     "RALLY": 1,
     "ASSIST": 1,
     "ANURSE": 1,
@@ -303,7 +345,7 @@
     "DRXLINK": "https://medicare.healthalliance.org/plan-details?plan=H1463-033-000",
     "RX": "TRUE",
     "SOB": "Med-sob19RIV2_3-0818web.pdf",
-    "EOC": "EOC-H1463033000.pdf",
+    "EOC/SBC": "EOC-H1463033000.pdf",
     "ANOC": "",
     "PREMIUM": 48,
     "MEDDEDUCTIBLE": "$0",
@@ -340,11 +382,23 @@
     "OUTHOSP_t1": "$100",
     "OUTHOSP_t2": "25%",
     "OUTHOSP_oon": "",
-    "INHOSP_t1": "$225/Day (1-8), $0 (Day 9+)",
-    "INHOSP_t2": "$465/Day (1-4), $0 (Day 5+)",
+    "INHOSP_t1": [
+      "$225/Day (1-8)",
+      "$0 (Day 9+)"
+    ],
+    "INHOSP_t2": [
+      "$465/Day (1-4)",
+      "$0 (Day 5+)"
+    ],
     "INHOSP_oon": "",
-    "SNF_t1": "$0/Day (1-20), $178 (Day 21-100)",
-    "SNF_t2": "$0/Day (1-20), $178 (Day 21-100)",
+    "SNF_t1": [
+      "$0/Day (1-20)",
+      "$178 (Day 21-100)"
+    ],
+    "SNF_t2": [
+      "$0/Day (1-20)",
+      "$178 (Day 21-100)"
+    ],
     "SNF_oon": "",
     "RXDEDUCTIBLE": "$0",
     "FORMULARY": "med-formularyMW-2019.pdf",
@@ -356,7 +410,7 @@
     "RX_t4": "50%",
     "RX_t5": "33%",
     "VV": 1,
-    "BEFIT": 1,
+    "BEFIT": 0,
     "RALLY": 1,
     "ASSIST": 1,
     "ANURSE": 1,
@@ -376,7 +430,7 @@
     "DRXLINK": "https://medicare.healthalliance.org/plan-details?plan=H1463-034-000",
     "RX": "TRUE",
     "SOB": "Med-sob19RIV2_3-0818web.pdf",
-    "EOC": "EOC-H1463034000.pdf",
+    "EOC/SBC": "EOC-H1463034000.pdf",
     "ANOC": "",
     "PREMIUM": 68,
     "MEDDEDUCTIBLE": "$0",
@@ -413,12 +467,30 @@
     "OUTHOSP_t1": "$100",
     "OUTHOSP_t2": "25%",
     "OUTHOSP_oon": "50%",
-    "INHOSP_t1": "$225/Day (1-8), $0 (Day 9+)",
-    "INHOSP_t2": "$465/Day (1-4), $0 (Day 5+)",
-    "INHOSP_oon": "$600/Day (1-4), $0 (Day 5-90)",
-    "SNF_t1": "$0/Day (1-20), $178 (Day 21-100)",
-    "SNF_t2": "$0/Day (1-20), $178 (Day 21-100)",
-    "SNF_oon": "$100/Day (1-20), $200 (Day 21-100)",
+    "INHOSP_t1": [
+      "$225/Day (1-8)",
+      "$0 (Day 9+)"
+    ],
+    "INHOSP_t2": [
+      "$465/Day (1-4)",
+      "$0 (Day 5+)"
+    ],
+    "INHOSP_oon": [
+      "$600/Day (1-4)",
+      "$0 (Day 5-90)"
+    ],
+    "SNF_t1": [
+      "$0/Day (1-20)",
+      "$178 (Day 21-100)"
+    ],
+    "SNF_t2": [
+      "$0/Day (1-20)",
+      "$178 (Day 21-100)"
+    ],
+    "SNF_oon": [
+      "$100/Day (1-20)",
+      "$200 (Day 21-100)"
+    ],
     "RXDEDUCTIBLE": "$0",
     "FORMULARY": "med-formularyMW-2019.pdf",
     "RXDIRECTORY": "med-pharmd19ILIN-0818web.pdf",
@@ -429,7 +501,7 @@
     "RX_t4": "50%",
     "RX_t5": "33%",
     "VV": 1,
-    "BEFIT": 1,
+    "BEFIT": 0,
     "RALLY": 1,
     "ASSIST": 1,
     "ANURSE": 1,

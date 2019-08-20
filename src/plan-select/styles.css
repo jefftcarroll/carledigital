@@ -1,3 +1,12 @@
+td.section:nth-child(1),
+td.section:nth-child(2) {
+  border-right: 1px solid #eee;
+}
+
+td.section.no-bottom-border {
+  border-bottom: 0;
+}
+
 h2.plan {
   font-size: 2em;
   font-weight: 500;

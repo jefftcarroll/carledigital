@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import Grid from '@material-ui/core/Grid'
 import { makeStyles } from '@material-ui/core/styles'
@@ -13,14 +13,29 @@ import PlanBenefits from './plan/benefits'
 
 import plans from '../data/plans.json'
 
+import Names from './sections/names'
+import SubNames from './sections/sub-names'
+import Descriptions from './sections/descriptions'
+import ViewDetailsButtons from './sections/view-details-buttons'
+import Heading from './sections/heading'
+
+import FindAProvider from './sections/find-a-provider'
+import MedicalDeductibles from './sections/medical-deductibles'
+import PrescriptionDrugDeductibles from './sections/prescription-drug-deductibles'
+
+import BenefitTiers1 from './sections/benefit-tiers-1'
+import BenefitTiers2 from './sections/benefit-tiers-2'
+import BenefitChecks from './sections/benefit-checks'
+
+import Table from '@material-ui/core/Table'
+import TableHead from '@material-ui/core/TableHead'
+import TableBody from '@material-ui/core/TableBody'
+import TableRow from '@material-ui/core/TableRow'
+import TableCell from '@material-ui/core/TableCell'
+
 // https://www.figma.com/proto/J9Gdebpcb3grmnjchfc3Rm9F/Simplete-Website?node-id=340%3A5325&viewport=857%2C397%2C0.16888083517551422&scaling=min-zoom
 
 const useStyles = makeStyles(theme => ({
-  root: {
-    width: '100%',
-    position: 'relative',
-    backgroundColor: theme.palette.background.paper,
-  },
   topButton: {
     marginTop: theme.spacing(3),
     marginBottom: theme.spacing(3),
@@ -34,127 +49,274 @@ const useStyles = makeStyles(theme => ({
     marginBottom: theme.spacing(3),
     textTransform: 'none',
   },
-
-  listHeadingContainer: {
-    position: 'fixed',
+  table: {
+    width: '100%',
+    marginTop: theme.spacing.unit * 3,
+    overflowX: 'auto',
+  },
+  thead: {
+    backgroundColor: '#fff',
+    position: 'sticky',
     top: 0,
     zIndex: 100,
   },
-  listItemContainer: {
-    marginTop: theme.spacing(13),
-    width: '100%',
-    position: 'relative',
-    zIndex: 1,
-  },
-  topRow: {
-    border: '1px solid #e2e2e2',
-  },
-  TopButtonCells: {
-    borderTop: '1px solid #e2e2e2',
-    borderLeft: '1px solid #e2e2e2',
-    borderRight: '1px solid #e2e2e2',
-  },
-  featureLeftColumn: {
-    borderBottom: '1px solid #e2e2e2',
-    borderRight: '1px solid #e2e2e2',
-  },
-  featureMiddleColumn: {
-    borderBottom: '1px solid #e2e2e2',
-  },
-  featureRightColumn: {
-    borderBottom: '1px solid #e2e2e2',
-    borderLeft: '1px solid #e2e2e2',
+  tsectionhead: {
+    border: '0px',
+    paddingTop: '24px',
+    paddingBottom: '24px',
   },
 }))
 
 export default function PlanSelect({}) {
   const classes = useStyles()
+  const [selectedPlans, setSelectedPlans] = useState(filterPlans(plans))
 
   function filterPlans(plans) {
     const keys = ['plan1', 'plan2', 'plan3']
     const selections = queryString.parse(window.location.search)
-    const selectedPlans = keys.map(key => selections[key])
 
-    return plans.filter(plan => selectedPlans.includes(plan.ID))
-  }
-
-  function getColumnName(i) {
-    if (i === 0) return 'left'
-    if (i === 1) return 'middle'
-    if (i === 2) return 'right'
+    return plans.filter(plan =>
+      keys.map(key => selections[key]).includes(plan.ID)
+    )
   }
 
   return (
     <Theme>
-      <div className={classes.root}>
-        <Grid
-          container
-          direction="row"
-          justify="space-evenly"
-          alignItems="center"
-          className={classes.listHeadingContainer}
-        >
-          {filterPlans(plans).map((json, i) => (
-            <Grid
-              item
-              key={json.ID}
-              xs={12}
-              sm={6}
-              md={4}
-              className={`${classes.TopButtonCells} cell-heading`}
-            >
-              <Button
-                variant="contained"
-                color="primary"
-                fullWidth
-                className={classes.topButton}
-              >
-                Choose {json.NAME}
-              </Button>
-            </Grid>
-          ))}
-        </Grid>
-
-        <div className={classes.listItemContainer}>
-          <Grid
-            container
-            direction="row"
-            justify="space-evenly"
-            alignItems="center"
-            className={classes.listItems}
-          >
-            {filterPlans(plans).map((json, i) => (
-              <Grid item key={json.name} xs={12} sm={6} md={4}>
-                <PlanBasics
-                  {...json}
-                  classes={classes}
-                  column={getColumnName(i)}
-                />
-              </Grid>
+      <Table className={classes.table}>
+        <TableHead>
+          <TableRow>
+            {selectedPlans.map(plan => (
+              <TableCell key={plan.ID} className={classes.thead}>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  fullWidth
+                  className={classes.topButton}
+                >
+                  Choose {plan.NAME}
+                </Button>
+              </TableCell>
             ))}
-          </Grid>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          <Names plans={selectedPlans} classes={classes} />
+          <SubNames plans={selectedPlans} classes={classes} />
+          <Descriptions plans={selectedPlans} classes={classes} />
+          <ViewDetailsButtons plans={selectedPlans} classes={classes} />
 
-          <h2>Covered Medical and Hospital Benefits</h2>
+          <Heading
+            plans={selectedPlans}
+            classes={classes}
+            text={'Provider Network'}
+          />
+          <FindAProvider plans={selectedPlans} classes={classes} />
 
-          <Grid
-            container
-            direction="row"
-            justify="space-evenly"
-            alignItems="center"
-            className={classes.listItems}
-          >
-            {filterPlans(plans).map((json, i) => (
-              <Grid item key={json.name} xs={12} sm={6} md={4}>
-                <PlanBenefits
-                  {...json}
-                  classes={classes}
-                  column={getColumnName(i)}
-                />
-              </Grid>
-            ))}
-          </Grid>
-        </div>
-      </div>
+          <Heading
+            plans={selectedPlans}
+            classes={classes}
+            text={'Medical Deductible'}
+          />
+          <MedicalDeductibles plans={selectedPlans} classes={classes} />
+
+          <Heading
+            plans={selectedPlans}
+            classes={classes}
+            text={'Prescription Drugs Deductible'}
+          />
+          <PrescriptionDrugDeductibles
+            plans={selectedPlans}
+            classes={classes}
+          />
+
+          <Heading
+            plans={selectedPlans}
+            classes={classes}
+            text={'Yearly Limit'}
+          />
+          <BenefitTiers1
+            plans={selectedPlans}
+            classes={classes}
+            tiers={['LIMIT_t1', 'LIMIT_t2', 'LIMIT_oon']}
+          />
+
+          <Heading
+            plans={selectedPlans}
+            classes={classes}
+            text={'Primary Care Physician Office Visit'}
+          />
+          <BenefitTiers1
+            plans={selectedPlans}
+            classes={classes}
+            tiers={['PCP_t1', 'PCP_t2', 'PCP_oon']}
+          />
+
+          <Heading
+            plans={selectedPlans}
+            classes={classes}
+            text={'Specialist Office Visit'}
+          />
+          <BenefitTiers1
+            plans={selectedPlans}
+            classes={classes}
+            tiers={['SPECIALIST_t1', 'SPECIALIST_t2', 'SPECIALIST_oon']}
+          />
+
+          <Heading
+            plans={selectedPlans}
+            classes={classes}
+            text={'Virtual Visits'}
+          />
+          <BenefitChecks plans={selectedPlans} classes={classes} attr="VV" />
+
+          <Heading
+            plans={selectedPlans}
+            classes={classes}
+            text={'Be Fit Fitness Program'}
+          />
+          <BenefitChecks plans={selectedPlans} classes={classes} attr="BEFIT" />
+
+          <Heading plans={selectedPlans} classes={classes} text={'Rally'} />
+          <BenefitChecks plans={selectedPlans} classes={classes} attr="RALLY" />
+
+          <Heading
+            plans={selectedPlans}
+            classes={classes}
+            text={'Assist America'}
+          />
+          <BenefitChecks
+            plans={selectedPlans}
+            classes={classes}
+            attr="ASSIST"
+          />
+
+          <Heading
+            plans={selectedPlans}
+            classes={classes}
+            text={'Anytime Nurse'}
+          />
+          <BenefitChecks
+            plans={selectedPlans}
+            classes={classes}
+            attr="ANURSE"
+          />
+
+          <Heading
+            plans={selectedPlans}
+            classes={classes}
+            text={'$200 or more for Dental'}
+          />
+          <BenefitChecks
+            plans={selectedPlans}
+            classes={classes}
+            attr="MOREDENTAL"
+          />
+
+          <Heading
+            plans={selectedPlans}
+            classes={classes}
+            text={'TruHearing Select Hearing Aids'}
+          />
+          <BenefitChecks
+            plans={selectedPlans}
+            classes={classes}
+            attr="TRUHEAR"
+          />
+
+          <TableRow>
+            <TableCell className={classes.tsectionhead} colSpan={plans.length}>
+              <h2>Covered Medical and Hospital Benefits</h2>
+            </TableCell>
+          </TableRow>
+
+          <Heading
+            plans={selectedPlans}
+            classes={classes}
+            text={'Physical Therapy'}
+          />
+          <BenefitTiers1
+            plans={selectedPlans}
+            classes={classes}
+            tiers={['PT_t1', 'PT_t2', 'PT_oon']}
+          />
+
+          <Heading
+            plans={selectedPlans}
+            classes={classes}
+            text={'Chiropractic Care'}
+          />
+          <BenefitTiers1
+            plans={selectedPlans}
+            classes={classes}
+            tiers={['CHIRO_t1', 'CHIRO_t2', 'CHIRO_oon']}
+          />
+
+          <Heading plans={selectedPlans} classes={classes} text={'Lab'} />
+          <BenefitTiers1
+            plans={selectedPlans}
+            classes={classes}
+            tiers={['LAB_t1', 'LAB_t2', 'LAB_oon']}
+          />
+
+          <Heading plans={selectedPlans} classes={classes} text={'X-Ray'} />
+          <BenefitTiers1
+            plans={selectedPlans}
+            classes={classes}
+            tiers={['XRAY_t1', 'XRAY_t2', 'XRAY_oon']}
+          />
+
+          <Heading plans={selectedPlans} classes={classes} text={'Ambulance'} />
+          <BenefitTiers1
+            plans={selectedPlans}
+            classes={classes}
+            tiers={['AMBULANCE_t1', 'AMBULANCE_t2', 'AMBULANCE_oon']}
+          />
+
+          <Heading
+            plans={selectedPlans}
+            classes={classes}
+            text={'Emergency Care'}
+          />
+          <BenefitTiers1
+            plans={selectedPlans}
+            classes={classes}
+            tiers={['EMERGENCY_t1', 'EMERGENCY_t2', 'EMERGENCY_oon']}
+          />
+
+          <Heading
+            plans={selectedPlans}
+            classes={classes}
+            text={'Urgent/Convenient Care'}
+          />
+          <BenefitTiers1
+            plans={selectedPlans}
+            classes={classes}
+            tiers={['URGENT_t1', 'URGENT_t2', 'URGENT_oon']}
+          />
+
+          <Heading
+            plans={selectedPlans}
+            classes={classes}
+            text={'Outpatient Hospital Care'}
+          />
+          <BenefitTiers1
+            plans={selectedPlans}
+            classes={classes}
+            tiers={['OUTHOSP_t1', 'OUTHOSP_t2', 'OUTHOSP_oon']}
+          />
+
+          <Heading
+            plans={selectedPlans}
+            classes={classes}
+            text={'Inpatient Hospital Care'}
+          />
+          <BenefitTiers2
+            plans={selectedPlans}
+            classes={classes}
+            tiers={['INHOSP_t1', 'INHOSP_t2', 'INHOSP_oon']}
+          />
+        </TableBody>
+      </Table>
     </Theme>
   )
 }
