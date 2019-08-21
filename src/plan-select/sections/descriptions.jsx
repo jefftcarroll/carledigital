@@ -7,8 +7,7 @@ export default function Descriptions({ plans }) {
     <TableRow>
       {plans.map(plan => (
         <TableCell key={plan.ID} className="section no-bottom-border">
-          Pay low premiums. Once you've hit the deductible, split the costs with
-          Simplete until you reach the out-of-pocket maximum.
+          {plan.DESCRIPTION}
         </TableCell>
       ))}
     </TableRow>

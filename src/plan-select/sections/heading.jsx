@@ -6,7 +6,7 @@ export default function Heading({ plans, text, classes }) {
   return (
     <TableRow>
       <TableCell className={classes.tsectionhead} colSpan={plans.length}>
-        <h3>{text}</h3>
+        <h5>{text}</h5>
       </TableCell>
     </TableRow>
   )

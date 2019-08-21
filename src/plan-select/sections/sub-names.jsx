@@ -8,8 +8,8 @@ export default function SubNames({ plans }) {
       {plans.map(plan => (
         <TableCell key={plan.ID} className="section no-bottom-border">
           <div className="flex-container">
-            <div className="left">{plans[0].SUBNAME}</div>
-            <div className="right">${plans[0].PREMIUM}/month</div>
+            <div className="left">{plan.SUBNAME}</div>
+            <div className="right purple">${plan.PREMIUM}/month</div>
           </div>
         </TableCell>
       ))}

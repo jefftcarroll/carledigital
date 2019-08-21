@@ -8,10 +8,6 @@ import queryString from 'query-string'
 import './styles.css'
 
 import Theme from '../theme'
-import PlanBasics from './plan/basics'
-import PlanBenefits from './plan/benefits'
-
-import plans from '../data/plans.json'
 
 import Names from './sections/names'
 import SubNames from './sections/sub-names'
@@ -32,6 +28,8 @@ import TableHead from '@material-ui/core/TableHead'
 import TableBody from '@material-ui/core/TableBody'
 import TableRow from '@material-ui/core/TableRow'
 import TableCell from '@material-ui/core/TableCell'
+
+import plans from '../data/plans.json'
 
 // https://www.figma.com/proto/J9Gdebpcb3grmnjchfc3Rm9F/Simplete-Website?node-id=340%3A5325&viewport=857%2C397%2C0.16888083517551422&scaling=min-zoom
 
@@ -92,6 +90,7 @@ export default function PlanSelect({}) {
                   color="primary"
                   fullWidth
                   className={classes.topButton}
+                  onClick={() => (document.location.href = plan.DRXLINK)}
                 >
                   Choose {plan.NAME}
                 </Button>
@@ -117,7 +116,11 @@ export default function PlanSelect({}) {
             classes={classes}
             text={'Medical Deductible'}
           />
-          <MedicalDeductibles plans={selectedPlans} classes={classes} />
+          <MedicalDeductibles
+            plans={selectedPlans}
+            classes={classes}
+            attr="RXDEDUCTIBLE"
+          />
 
           <Heading
             plans={selectedPlans}
@@ -314,6 +317,99 @@ export default function PlanSelect({}) {
             plans={selectedPlans}
             classes={classes}
             tiers={['INHOSP_t1', 'INHOSP_t2', 'INHOSP_oon']}
+          />
+
+          <TableRow>
+            <TableCell className={classes.tsectionhead} colSpan={plans.length}>
+              <h2>Prescription Drug Coverage</h2>
+              <p>
+                With Simplete, Part D (prescription coverage) is included
+                automatically. There are no pharmacy deductibles and you can get
+                Tier 1 generic drugs for $0 when you fill your prescription at
+                Walgreens or other preferred cost-sharing pharmacies. You can
+                also get drugs at other standard cost-sharing network pharmacies
+                for a low cost.
+              </p>
+              <p>
+                <strong>Prices listed are for 30-Day Retail.</strong>
+              </p>
+            </TableCell>
+          </TableRow>
+
+          <Heading
+            plans={selectedPlans}
+            classes={classes}
+            text={'Prescription Drugs Deductible'}
+          />
+          <PrescriptionDrugDeductibles
+            plans={selectedPlans}
+            classes={classes}
+          />
+
+          <Heading
+            plans={selectedPlans}
+            classes={classes}
+            text={'Tier 1 Preferred Generic at Preferred Pharmacy'}
+          />
+          <PrescriptionDrugDeductibles
+            plans={selectedPlans}
+            classes={classes}
+            attr="RXPRE_t1"
+          />
+
+          <Heading
+            plans={selectedPlans}
+            classes={classes}
+            text={'Tier 1 Preferred Generic'}
+          />
+          <PrescriptionDrugDeductibles
+            plans={selectedPlans}
+            classes={classes}
+            attr="RX_t1"
+          />
+
+          <Heading
+            plans={selectedPlans}
+            classes={classes}
+            text={'Tier 2 Generic'}
+          />
+          <PrescriptionDrugDeductibles
+            plans={selectedPlans}
+            classes={classes}
+            attr="RX_t2"
+          />
+
+          <Heading
+            plans={selectedPlans}
+            classes={classes}
+            text={'Tier 3 Preferred Brand'}
+          />
+          <PrescriptionDrugDeductibles
+            plans={selectedPlans}
+            classes={classes}
+            attr="RX_t3"
+          />
+
+          <Heading
+            plans={selectedPlans}
+            classes={classes}
+            text={'Tier 4 Non-Preferred Brand'}
+          />
+          <PrescriptionDrugDeductibles
+            plans={selectedPlans}
+            classes={classes}
+            attr="RX_t4"
+          />
+
+          <Heading
+            plans={selectedPlans}
+            classes={classes}
+            text={'Tier 5 Specialty Tier'}
+          />
+          <PrescriptionDrugDeductibles
+            plans={selectedPlans}
+            classes={classes}
+            attr="RX_t5"
           />
         </TableBody>
       </Table>
