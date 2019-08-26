@@ -10,7 +10,7 @@ export default function Names({ plans }) {
           <h3>
             <a
               href={
-                'https://simplete.org/find-care?directory=${plan.DIRECTORY}'
+                `https://simplete.org/find-care?directory=${plan.DIRECTORY}`
               }
             >
               Find a Provider

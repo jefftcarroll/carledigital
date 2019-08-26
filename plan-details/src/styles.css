@@ -1,0 +1,89 @@
+html,
+body,
+div,
+header,
+section,
+main,
+footer,
+h1,
+h2,
+h3,
+h4,
+p,
+input,
+button,
+input,
+label {
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  font-family: 'Museo-Sans-100', Arial, sans;
+  background: #ffffff;
+  width: 100%;
+  height: 100%;
+}
+
+section {
+  height: auto;
+}
+
+.wrapper {
+  width: 1000px;
+  margin: 0 auto;
+  margin: ;
+}
+
+.hover {
+  -o-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+}
+
+h1 {
+  font-family: 'Museo-Sans-100', Arial, sans;
+  font-size: 46px;
+  line-height: 55px;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  color: #090012;
+  font-family: 'Museo-Sans-100', Arial, sans;
+  font-size: 2.5em;
+  margin-bottom: 0.4925em;
+}
+
+h3 {
+  font-family: 'Museo-Sans-100', Arial, sans;
+  margin: 0;
+  padding: 0;
+}
+
+strong {
+  font-family: 'Museo-Sans-500', Arial, sans;
+}
+
+div.border {
+  border-top: 1px solid #e7e7e7;
+}
+
+a {
+  text-decoration: underline;
+  cursor: pointer;
+  color: #572c80;
+}
+
+a:visited {
+  color: #572c80;
+}
+
+.tabs {
+  width: 100%;
+  border-top: 2px solid #e3e3e3;
+  border-bottom: 2px solid #e3e3e3;
+}

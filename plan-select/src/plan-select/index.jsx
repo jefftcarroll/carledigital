@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 
-import Grid from '@material-ui/core/Grid'
 import { makeStyles } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
 import queryString from 'query-string'
@@ -119,7 +118,7 @@ export default function PlanSelect({}) {
           <MedicalDeductibles
             plans={selectedPlans}
             classes={classes}
-            attr="RXDEDUCTIBLE"
+            attr="MEDDEDUCTIBLE"
           />
 
           <Heading
@@ -130,6 +129,8 @@ export default function PlanSelect({}) {
           <PrescriptionDrugDeductibles
             plans={selectedPlans}
             classes={classes}
+            attr="RXDEDUCTIBLE"
+            showDeductibleLabel
           />
 
           <Heading
@@ -344,6 +345,8 @@ export default function PlanSelect({}) {
           <PrescriptionDrugDeductibles
             plans={selectedPlans}
             classes={classes}
+            attr="RXDEDUCTIBLE"
+            showDeductibleLabel
           />
 
           <Heading
