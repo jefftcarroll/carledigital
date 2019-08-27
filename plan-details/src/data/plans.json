@@ -50,18 +50,12 @@
     "OUTHOSP_t1": "$100",
     "OUTHOSP_t2": "",
     "OUTHOSP_oon": "",
-    "INHOSP_t1": [
-      "$200/Day (1-8)",
-      "$0 (Day 9+)"
-    ],
-    "INHOSP_t2": "",
-    "INHOSP_oon": "",
-    "SNF_t1": [
-      "$0/Day (1-20)",
-      "$178 (Day 21-100)"
-    ],
-    "SNF_t2": "",
-    "SNF_oon": "",
+    "INHOSP_t1": ["$200/Day (1-8)", "$0 (Day 9+)"],
+    "INHOSP_t2": [],
+    "INHOSP_oon": [],
+    "SNF_t1": ["$0/Day (1-20)", "$178 (Day 21-100)"],
+    "SNF_t2": [],
+    "SNF_oon": [],
     "RXDEDUCTIBLE": "$0",
     "FORMULARY": "med-formularyMW-2019.pdf",
     "RXDIRECTORY": "med-pharmd19ILIN-0818web.pdf",
@@ -131,24 +125,12 @@
     "OUTHOSP_t1": "$100",
     "OUTHOSP_t2": "25%",
     "OUTHOSP_oon": "",
-    "INHOSP_t1": [
-      "$200/Day (1-8)",
-      "$0 (Day 9+)"
-    ],
-    "INHOSP_t2": [
-      "$250/Day (1-8)",
-      "$0 (Day 9+)"
-    ],
-    "INHOSP_oon": "",
-    "SNF_t1": [
-      "$0/Day (1-20)",
-      "$178 (Day 21-100)"
-    ],
-    "SNF_t2": [
-      "$0/Day (1-20)",
-      "$178 (Day 21-100)"
-    ],
-    "SNF_oon": "",
+    "INHOSP_t1": ["$200/Day (1-8)", "$0 (Day 9+)"],
+    "INHOSP_t2": ["$250/Day (1-8)", "$0 (Day 9+)"],
+    "INHOSP_oon": [],
+    "SNF_t1": ["$0/Day (1-20)", "$178 (Day 21-100)"],
+    "SNF_t2": ["$0/Day (1-20)", "$178 (Day 21-100)"],
+    "SNF_oon": [],
     "RXDEDUCTIBLE": "$0",
     "FORMULARY": "med-formularyMW-2019.pdf",
     "RXDIRECTORY": "med-pharmd19ILIN-0818web.pdf",
@@ -218,30 +200,12 @@
     "OUTHOSP_t1": "$100",
     "OUTHOSP_t2": "25%",
     "OUTHOSP_oon": "50%",
-    "INHOSP_t1": [
-      "$200/Day (1-8)",
-      "$0 (Day 9+)"
-    ],
-    "INHOSP_t2": [
-      "$250/Day (1-8)",
-      "$0 (Day 9+)"
-    ],
-    "INHOSP_oon": [
-      "$600/Day (1-4)",
-      "$0 (Day 5-90)"
-    ],
-    "SNF_t1": [
-      "$0/Day (1-20)",
-      "$178 (Day 21-100)"
-    ],
-    "SNF_t2": [
-      "$0/Day (1-20)",
-      "$178 (Day 21-100)"
-    ],
-    "SNF_oon": [
-      "$100/Day (1-20)",
-      "$200 (Day 21-100)"
-    ],
+    "INHOSP_t1": ["$200/Day (1-8)", "$0 (Day 9+)"],
+    "INHOSP_t2": ["$250/Day (1-8)", "$0 (Day 9+)"],
+    "INHOSP_oon": ["$600/Day (1-4)", "$0 (Day 5-90)"],
+    "SNF_t1": ["$0/Day (1-20)", "$178 (Day 21-100)"],
+    "SNF_t2": ["$0/Day (1-20)", "$178 (Day 21-100)"],
+    "SNF_oon": ["$100/Day (1-20)", "$200 (Day 21-100)"],
     "RXDEDUCTIBLE": "$0",
     "FORMULARY": "med-formularyMW-2019.pdf",
     "RXDIRECTORY": "med-pharmd19ILIN-0818web.pdf",
@@ -311,18 +275,12 @@
     "OUTHOSP_t1": "$100",
     "OUTHOSP_t2": "",
     "OUTHOSP_oon": "",
-    "INHOSP_t1": [
-      "$225/Day (1-8)",
-      "$0 (Day 9+)"
-    ],
+    "INHOSP_t1": ["$225/Day (1-8)", "$0 (Day 9+)"],
     "INHOSP_t2": "",
-    "INHOSP_oon": "",
-    "SNF_t1": [
-      "$0/Day (1-20)",
-      "$178 (Day 21-100)"
-    ],
+    "INHOSP_oon": [],
+    "SNF_t1": ["$0/Day (1-20)", "$178 (Day 21-100)"],
     "SNF_t2": "",
-    "SNF_oon": "",
+    "SNF_oon": [],
     "RXDEDUCTIBLE": "$0",
     "FORMULARY": "med-formularyMW-2019.pdf",
     "RXDIRECTORY": "med-pharmd19ILIN-0818web.pdf",
@@ -392,24 +350,12 @@
     "OUTHOSP_t1": "$100",
     "OUTHOSP_t2": "25%",
     "OUTHOSP_oon": "",
-    "INHOSP_t1": [
-      "$225/Day (1-8)",
-      "$0 (Day 9+)"
-    ],
-    "INHOSP_t2": [
-      "$465/Day (1-4)",
-      "$0 (Day 5+)"
-    ],
-    "INHOSP_oon": "",
-    "SNF_t1": [
-      "$0/Day (1-20)",
-      "$178 (Day 21-100)"
-    ],
-    "SNF_t2": [
-      "$0/Day (1-20)",
-      "$178 (Day 21-100)"
-    ],
-    "SNF_oon": "",
+    "INHOSP_t1": ["$225/Day (1-8)", "$0 (Day 9+)"],
+    "INHOSP_t2": ["$465/Day (1-4)", "$0 (Day 5+)"],
+    "INHOSP_oon": [],
+    "SNF_t1": ["$0/Day (1-20)", "$178 (Day 21-100)"],
+    "SNF_t2": ["$0/Day (1-20)", "$178 (Day 21-100)"],
+    "SNF_oon": [],
     "RXDEDUCTIBLE": "$0",
     "FORMULARY": "med-formularyMW-2019.pdf",
     "RXDIRECTORY": "med-pharmd19ILIN-0818web.pdf",
@@ -479,30 +425,12 @@
     "OUTHOSP_t1": "$100",
     "OUTHOSP_t2": "25%",
     "OUTHOSP_oon": "50%",
-    "INHOSP_t1": [
-      "$225/Day (1-8)",
-      "$0 (Day 9+)"
-    ],
-    "INHOSP_t2": [
-      "$465/Day (1-4)",
-      "$0 (Day 5+)"
-    ],
-    "INHOSP_oon": [
-      "$600/Day (1-4)",
-      "$0 (Day 5-90)"
-    ],
-    "SNF_t1": [
-      "$0/Day (1-20)",
-      "$178 (Day 21-100)"
-    ],
-    "SNF_t2": [
-      "$0/Day (1-20)",
-      "$178 (Day 21-100)"
-    ],
-    "SNF_oon": [
-      "$100/Day (1-20)",
-      "$200 (Day 21-100)"
-    ],
+    "INHOSP_t1": ["$225/Day (1-8)", "$0 (Day 9+)"],
+    "INHOSP_t2": ["$465/Day (1-4)", "$0 (Day 5+)"],
+    "INHOSP_oon": ["$600/Day (1-4)", "$0 (Day 5-90)"],
+    "SNF_t1": ["$0/Day (1-20)", "$178 (Day 21-100)"],
+    "SNF_t2": ["$0/Day (1-20)", "$178 (Day 21-100)"],
+    "SNF_oon": ["$100/Day (1-20)", "$200 (Day 21-100)"],
     "RXDEDUCTIBLE": "$0",
     "FORMULARY": "med-formularyMW-2019.pdf",
     "RXDIRECTORY": "med-pharmd19ILIN-0818web.pdf",

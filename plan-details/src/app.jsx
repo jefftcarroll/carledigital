@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 
 import { makeStyles } from '@material-ui/core/styles'
-import Button from '@material-ui/core/Button'
 import queryString from 'query-string'
 
 import plans from './data/plans.json'
@@ -10,7 +9,6 @@ import './styles.css'
 
 import Theme from './theme'
 import PlanDetail from './plan-detail'
-
 
 // https://www.figma.com/file/J9Gdebpcb3grmnjchfc3Rm9F/Simplete-Website?node-id=996%3A10436
 
@@ -33,26 +31,33 @@ const useStyles = makeStyles(theme => ({
     marginTop: theme.spacing.unit * 3,
     overflowX: 'auto',
   },
-  
+  specialNote: {
+    padding: 24,
+    margin: 16,
+  },
 }))
 
 function getPlan() {
   const q = queryString.parse(window.location.search)
-  console.log(q.plan)
   return plans.find(plan => q.plan === plan.ID)
 }
 
+function getShopView() {
+  const q = queryString.parse(window.location.search)
+  return q.page
+}
+
 export default function PlanDetails({}) {
-  const [plan, setPlan] = useState(getPlan())
   const classes = useStyles()
-  
+  const plan = getPlan()
+
   return (
     <Theme>
-      {
-        plan
-          ? <PlanDetail classes={classes} plan={plan} />
-          : "loading"
-      }
+      {plan ? (
+        <PlanDetail classes={classes} plan={plan} shopView={getShopView()} />
+      ) : (
+        'loading'
+      )}
     </Theme>
   )
 }
