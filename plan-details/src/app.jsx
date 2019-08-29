@@ -22,18 +22,40 @@ const useStyles = makeStyles(theme => ({
     textTransform: 'none',
   },
   button: {
-    marginTop: theme.spacing(3),
-    marginBottom: theme.spacing(3),
     textTransform: 'none',
+    margin: theme.spacing(2),
+    marginLeft: 0,
+    boxShadow: 'none',
+    border: '1px solid #e3e3e3',
   },
   table: {
     width: '100%',
     marginTop: theme.spacing.unit * 3,
     overflowX: 'auto',
+    boxSizing: 'border-box',
+  },
+  tableRow: {
+    width: '100%',
+    overflowX: 'auto',
+    boxSizing: 'border-box',
   },
   specialNote: {
-    padding: 24,
-    margin: 16,
+    padding: theme.spacing(3),
+    margin: theme.spacing(2),
+  },
+  cardHeader: {
+    backgroundColor: '#572C80',
+    padding: theme.spacing(3),
+    color: '#ffffff',
+  },
+  card: {
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(2),
+    boxShadow: 'none',
+    border: '1px solid #e3e3e3',
+  },
+  note: {
+    fontFamily: 'museo_sans100',
   },
 }))
 
