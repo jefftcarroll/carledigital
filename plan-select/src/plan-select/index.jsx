@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import { makeStyles } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
@@ -28,7 +28,8 @@ import TableBody from '@material-ui/core/TableBody'
 import TableRow from '@material-ui/core/TableRow'
 import TableCell from '@material-ui/core/TableCell'
 
-import plans from '../data/plans.json'
+import fetch from 'isomorphic-fetch'
+require('es6-promises')
 
 // https://www.figma.com/proto/J9Gdebpcb3grmnjchfc3Rm9F/Simplete-Website?node-id=340%3A5325&viewport=857%2C397%2C0.16888083517551422&scaling=min-zoom
 
@@ -64,11 +65,26 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default function PlanSelect({}) {
+export default function PlanSelect() {
   const classes = useStyles()
-  const [selectedPlans, setSelectedPlans] = useState(filterPlans(plans))
+
+  const [selectedPlans, setSelectedPlans] = useState([])
+
+  useEffect(() => {
+    const url =
+      process.env && process.env.REACT_APP_JSON_HOST
+        ? process.env.REACT_APP_JSON_HOST
+        : window.location.host
+
+    fetch(`${url}/2020/plans.json`, {})
+      .then(resp => resp.json())
+      .then(json => {
+        setSelectedPlans(filterPlans(JSON.parse(json)))
+      })
+  }, [])
 
   function filterPlans(plans) {
+    if (plans.length === 0) return []
     const keys = ['plan1', 'plan2', 'plan3']
     const selections = queryString.parse(window.location.search)
 
@@ -228,7 +244,10 @@ export default function PlanSelect({}) {
           />
 
           <TableRow>
-            <TableCell className={classes.tsectionhead} colSpan={plans.length}>
+            <TableCell
+              className={classes.tsectionhead}
+              colSpan={selectedPlans.length}
+            >
               <h2>Covered Medical and Hospital Benefits</h2>
             </TableCell>
           </TableRow>
@@ -321,7 +340,10 @@ export default function PlanSelect({}) {
           />
 
           <TableRow>
-            <TableCell className={classes.tsectionhead} colSpan={plans.length}>
+            <TableCell
+              className={classes.tsectionhead}
+              colSpan={selectedPlans.length}
+            >
               <h2>Prescription Drug Coverage</h2>
               <p>
                 With Simplete, Part D (prescription coverage) is included

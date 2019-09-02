@@ -117,4 +117,7 @@ a:visited {
 .wrapper {
   width: 1000px;
   margin: 0 auto;
+  overflow-x: auto;
+  margin-right: auto;
+  margin-left: auto;
 }
