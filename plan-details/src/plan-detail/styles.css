@@ -29,12 +29,23 @@ label {
 }
 
 html,
-body {
+body,
+td {
   font-family: 'museo_sans300', Arial, sans;
+  font-size: 16px;
 }
 
 section {
   height: auto;
+}
+
+td:first-child {
+  padding-left: 0px;
+  margin-left: 0px;
+}
+
+ul {
+  padding-left: 18px;
 }
 
 .hover {
@@ -89,21 +100,6 @@ p.small-header {
   margin-bottom: 1.0625em;
 }
 
-p.intro-text {
-  color: #6b6777;
-  font-family: 'Museo-Sans-100', Arial, sans;
-  font-size: 1.25em;
-  line-height: 1.65em;
-}
-
-strong {
-  font-family: 'Museo-Sans-500', Arial, sans;
-}
-
-div.border {
-  border-top: 1px solid #e7e7e7;
-}
-
 a {
   text-decoration: underline;
   cursor: pointer;
@@ -120,4 +116,13 @@ a:visited {
   overflow-x: auto;
   margin-right: auto;
   margin-left: auto;
+}
+
+table.medical-benefits td {
+  padding: 16px 0;
+  width: 16.666666666666667%;
+}
+
+table.medical-benefits td:first-child {
+  width: 50%;
 }

@@ -13,6 +13,13 @@ const theme = responsiveFontSizes(
         main: '#08a9e2',
       },
     },
+    typography: {
+      fontFamily: 'museo300',
+      fontStyle: 'normal',
+      fontDisplay: 'swap',
+      fontWeight: 300,
+      fontSize: 18,
+    }
   })
 )
 

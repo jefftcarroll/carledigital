@@ -18,16 +18,23 @@ import {
   Card,
   CardHeader,
   CardContent,
+  Typography,
+  ExpansionPanel,
+  ExpansionPanelSummary,
+  ExpansionPanelDetails,
 } from '@material-ui/core'
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 
 import pdfIcon from './pdf-24.png'
 import downIcon from './down-24.png'
 import upIcon from './up-24.png'
 
+import './styles.css'
 import Theme from '../theme'
 
 import fetch from 'isomorphic-fetch'
 require('es6-promises')
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -39,7 +46,8 @@ const useStyles = makeStyles(theme => ({
     paddingTop: theme.spacing(1.5),
     paddingBottom: theme.spacing(1.5),
     boxSizing: 'border-box',
-    textTransform: 'none',
+    fontSize: '16px',
+    fontWeight: 'bold',
   },
   button: {
     textTransform: 'none',
@@ -51,7 +59,7 @@ const useStyles = makeStyles(theme => ({
   table: {
     width: '100%',
     marginTop: theme.spacing.unit * 3,
-    overflowX: 'auto',
+    padding: 0,
     boxSizing: 'border-box',
   },
   tableRow: {
@@ -59,9 +67,12 @@ const useStyles = makeStyles(theme => ({
     overflowX: 'auto',
     boxSizing: 'border-box',
   },
+  tableCell: {
+    padding: 0,
+  },
   specialNote: {
     padding: theme.spacing(3),
-    margin: theme.spacing(2),
+    margin: theme.spacing(3),
   },
   cardHeader: {
     backgroundColor: '#572C80',
@@ -76,6 +87,16 @@ const useStyles = makeStyles(theme => ({
   },
   note: {
     fontFamily: 'museo_sans100',
+  },
+  accordionHeading: {
+    fontSize: theme.typography.pxToRem(15),
+    fontWeight: theme.typography.fontWeightRegular,
+  },
+  sticky: {
+    backgroundColor: '#fff',
+    position: 'sticky',
+    top: 0,
+    zIndex: 100,
   },
 }))
 
@@ -143,9 +164,8 @@ function View({}) {
 export default function PlanDetail() {
   const classes = useStyles()
   const tabs = ['Overview', 'Medical', 'Pharmacy']
-  const [selectedTabIndex, setSelectedTabIndex] = useState(0)
-  const [selectedAccordionIndex, setSelectedAccordionIndex] = useState(-1)
   const [plan, setPlan] = useState(null)
+  const [selectedTabIndex, setSelectedTabIndex] = useState(-1)
 
   function getShopView() {
     const q = queryString.parse(window.location.search)
@@ -163,16 +183,15 @@ export default function PlanDetail() {
       .then(json => {
         const q = queryString.parse(window.location.search)
         const _plan = JSON.parse(json).find(plan => q.plan === plan.ID)
-        debugger
         setPlan(_plan)
       })
   }, [])
 
-  return plan && plan.name ? (
+  return plan && plan.NAME ? (
     <Theme>
       <div className={`${classes.root} wrapper`}>
         <ScrollableAnchor id="section_top">
-          <div className="tabs">
+          <div className={`${classes.sticky} tabs`}>
             <Tabs
               value={selectedTabIndex}
               onChange={(e, index) => setSelectedTabIndex(index)}
@@ -181,7 +200,7 @@ export default function PlanDetail() {
             >
               {tabs.map((label, i) => (
                 <a href={`#section_${i}`}>
-                  <Tab label={label} />
+                  <Tab label={label} className={classes.topButton} />
                 </a>
               ))}
             </Tabs>
@@ -260,7 +279,7 @@ export default function PlanDetail() {
           </Grid>
 
           <Grid item xs={12} sm={12} md={8}>
-            <Table className={classes.table}>
+            <Table className={`${classes.table} medical-benefits`}>
               <TableHead>
                 <TableRow className={classes.tableRow}>
                   <TableCell></TableCell>
@@ -273,58 +292,58 @@ export default function PlanDetail() {
               <TableBody>
                 <TableRow className={classes.tableRow}>
                   <TableCell>Primary Care Physician Office Visit</TableCell>
-                  <TableCell>{plan.PCP_t1 || 'Not Applicable'}</TableCell>
-                  <TableCell>{plan.PCP_t2 || 'Not Applicable'}</TableCell>
-                  <TableCell>{plan.PCP_oon || 'Not Applicable'}</TableCell>
+                  <TableCell>{plan.PCP_t1 || 'N/A'}</TableCell>
+                  <TableCell>{plan.PCP_t2 || 'N/A'}</TableCell>
+                  <TableCell>{plan.PCP_oon || 'N/A'}</TableCell>
                 </TableRow>
 
                 <TableRow className={classes.tableRow}>
                   <TableCell>Specialist Office Visit</TableCell>
                   <TableCell>
-                    {plan.SPECIALIST_t1 || 'Not Applicable'}
+                    {plan.SPECIALIST_t1 || 'N/A'}
                   </TableCell>
                   <TableCell>
-                    {plan.SPECIALIST_t2 || 'Not Applicable'}
+                    {plan.SPECIALIST_t2 || 'N/A'}
                   </TableCell>
                   <TableCell>
-                    {plan.SPECIALIST_oon || 'Not Applicable'}
+                    {plan.SPECIALIST_oon || 'N/A'}
                   </TableCell>
                 </TableRow>
 
                 <TableRow className={classes.tableRow}>
                   <TableCell>Physical Therapy</TableCell>
-                  <TableCell>{plan.PT_t1 || 'Not Applicable'}</TableCell>
-                  <TableCell>{plan.PT_t2 || 'Not Applicable'}</TableCell>
-                  <TableCell>{plan.PT_oon || 'Not Applicable'}</TableCell>
+                  <TableCell>{plan.PT_t1 || 'N/A'}</TableCell>
+                  <TableCell>{plan.PT_t2 || 'N/A'}</TableCell>
+                  <TableCell>{plan.PT_oon || 'N/A'}</TableCell>
                 </TableRow>
 
                 <TableRow className={classes.tableRow}>
                   <TableCell>Chiropractic Care</TableCell>
-                  <TableCell>{plan.CHIRO_t1 || 'Not Applicable'}</TableCell>
-                  <TableCell>{plan.CHIRO_t2 || 'Not Applicable'}</TableCell>
-                  <TableCell>{plan.CHIRO_oon || 'Not Applicable'}</TableCell>
+                  <TableCell>{plan.CHIRO_t1 || 'N/A'}</TableCell>
+                  <TableCell>{plan.CHIRO_t2 || 'N/A'}</TableCell>
+                  <TableCell>{plan.CHIRO_oon || 'N/A'}</TableCell>
                 </TableRow>
 
                 <TableRow className={classes.tableRow}>
                   <TableCell>Lab</TableCell>
-                  <TableCell>{plan.LAB_t1 || 'Not Applicable'}</TableCell>
-                  <TableCell>{plan.LAB_t2 || 'Not Applicable'}</TableCell>
-                  <TableCell>{plan.LAB_oon || 'Not Applicable'}</TableCell>
+                  <TableCell>{plan.LAB_t1 || 'N/A'}</TableCell>
+                  <TableCell>{plan.LAB_t2 || 'N/A'}</TableCell>
+                  <TableCell>{plan.LAB_oon || 'N/A'}</TableCell>
                 </TableRow>
 
                 <TableRow className={classes.tableRow}>
                   <TableCell>X-Ray</TableCell>
-                  <TableCell>{plan.XRAY_t1 || 'Not Applicable'}</TableCell>
-                  <TableCell>{plan.XRAY_t2 || 'Not Applicable'}</TableCell>
-                  <TableCell>{plan.XRAY_oon || 'Not Applicable'}</TableCell>
+                  <TableCell>{plan.XRAY_t1 || 'N/A'}</TableCell>
+                  <TableCell>{plan.XRAY_t2 || 'N/A'}</TableCell>
+                  <TableCell>{plan.XRAY_oon || 'N/A'}</TableCell>
                 </TableRow>
 
                 <TableRow className={classes.tableRow}>
                   <TableCell>Ambulance</TableCell>
-                  <TableCell>{plan.AMBULANCE_t1 || 'Not Applicable'}</TableCell>
-                  <TableCell>{plan.AMBULANCE_t2 || 'Not Applicable'}</TableCell>
+                  <TableCell>{plan.AMBULANCE_t1 || 'N/A'}</TableCell>
+                  <TableCell>{plan.AMBULANCE_t2 || 'N/A'}</TableCell>
                   <TableCell>
-                    {plan.AMBULANCE_oon || 'Not Applicable'}
+                    {plan.AMBULANCE_oon || 'N/A'}
                   </TableCell>
                 </TableRow>
 
@@ -332,25 +351,25 @@ export default function PlanDetail() {
                   <TableCell>
                     Emergency Care <br /> Emergency care's available worldwide.
                   </TableCell>
-                  <TableCell>{plan.EMERGENCY_t1 || 'Not Applicable'}</TableCell>
-                  <TableCell>{plan.EMERGENCY_t2 || 'Not Applicable'}</TableCell>
+                  <TableCell>{plan.EMERGENCY_t1 || 'N/A'}</TableCell>
+                  <TableCell>{plan.EMERGENCY_t2 || 'N/A'}</TableCell>
                   <TableCell>
-                    {plan.EMERGENCY_oon || 'Not Applicable'}
+                    {plan.EMERGENCY_oon || 'N/A'}
                   </TableCell>
                 </TableRow>
 
                 <TableRow className={classes.tableRow}>
                   <TableCell>Urgent/Convenient Care</TableCell>
-                  <TableCell>{plan.URGENT_t1 || 'Not Applicable'}</TableCell>
-                  <TableCell>{plan.URGENT_t2 || 'Not Applicable'}</TableCell>
-                  <TableCell>{plan.URGENT_oon || 'Not Applicable'}</TableCell>
+                  <TableCell>{plan.URGENT_t1 || 'N/A'}</TableCell>
+                  <TableCell>{plan.URGENT_t2 || 'N/A'}</TableCell>
+                  <TableCell>{plan.URGENT_oon || 'N/A'}</TableCell>
                 </TableRow>
 
                 <TableRow className={classes.tableRow}>
                   <TableCell>Outpatient Hospital Care</TableCell>
-                  <TableCell>{plan.OUTHOSP_t1 || 'Not Applicable'}</TableCell>
-                  <TableCell>{plan.OUTHOSP_t2 || 'Not Applicable'}</TableCell>
-                  <TableCell>{plan.OUTHOSP_oon || 'Not Applicable'}</TableCell>
+                  <TableCell>{plan.OUTHOSP_t1 || 'N/A'}</TableCell>
+                  <TableCell>{plan.OUTHOSP_t2 || 'N/A'}</TableCell>
+                  <TableCell>{plan.OUTHOSP_oon || 'N/A'}</TableCell>
                 </TableRow>
 
                 <TableRow className={classes.tableRow}>
@@ -533,115 +552,78 @@ export default function PlanDetail() {
           </Grid>
 
           <Grid item xs={12} sm={12} md={8}>
-            <Table className={classes.table}>
-              <TableBody>
-                <TableRow className={classes.tableRow}>
-                  <TableCell>Extra Help Paying for Prescriptions</TableCell>
-                  <TableCell>
-                    <img
-                      src={selectedAccordionIndex === 0 ? upIcon : downIcon}
-                      onClick={() =>
-                        setSelectedAccordionIndex(
-                          selectedAccordionIndex == 0 ? -1 : 0
-                        )
-                      }
-                    />
-                  </TableCell>
-                </TableRow>
-                <TableRow
-                  style={{
-                    display: selectedAccordionIndex === 0 ? 'block' : 'none',
-                  }}
-                >
-                  <TableCell colSpan={2}>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+<ExpansionPanel>
+        <ExpansionPanelSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <Typography className={classes.heading}>Extra Help Paying for Prescriptions</Typography>
+        </ExpansionPanelSummary>
+        <ExpansionPanelDetails>
+          <Typography>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Error minus repellat iste ipsam repudiandae animi dolore
                     quidem. Ea inventore minima libero, quam cumque molestiae
                     deleniti neque, totam dolores, ab quae?
-                  </TableCell>
-                </TableRow>
+          </Typography>
+        </ExpansionPanelDetails>
+      </ExpansionPanel>
 
-                <TableRow className={classes.tableRow}>
-                  <TableCell>
-                    Preauthorization &amp; Clinical Guidelines
-                  </TableCell>
-                  <TableCell>
-                    <img
-                      src={selectedAccordionIndex === 1 ? upIcon : downIcon}
-                      onClick={() =>
-                        setSelectedAccordionIndex(
-                          selectedAccordionIndex == 1 ? -1 : 1
-                        )
-                      }
-                    />
-                  </TableCell>
-                </TableRow>
-                <TableRow
-                  style={{
-                    display: selectedAccordionIndex === 1 ? 'block' : 'none',
-                  }}
-                >
-                  <TableCell colSpan={2}>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      <ExpansionPanel>
+        <ExpansionPanelSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <Typography className={classes.heading}>Preauthorization &amp; Clinical Guidelines</Typography>
+        </ExpansionPanelSummary>
+        <ExpansionPanelDetails>
+          <Typography>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Error minus repellat iste ipsam repudiandae animi dolore
                     quidem. Ea inventore minima libero, quam cumque molestiae
                     deleniti neque, totam dolores, ab quae?
-                  </TableCell>
-                </TableRow>
+          </Typography>
+        </ExpansionPanelDetails>
+      </ExpansionPanel>
 
-                <TableRow className={classes.tableRow}>
-                  <TableCell>High Risk Medications</TableCell>
-                  <TableCell>
-                    <img
-                      src={selectedAccordionIndex === 2 ? upIcon : downIcon}
-                      onClick={() =>
-                        setSelectedAccordionIndex(
-                          selectedAccordionIndex == 2 ? -1 : 2
-                        )
-                      }
-                    />
-                  </TableCell>
-                </TableRow>
-                <TableRow
-                  style={{
-                    display: selectedAccordionIndex === 2 ? 'block' : 'none',
-                  }}
-                >
-                  <TableCell colSpan={2}>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      <ExpansionPanel>
+        <ExpansionPanelSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <Typography className={classes.heading}>High Risk Medications</Typography>
+        </ExpansionPanelSummary>
+        <ExpansionPanelDetails>
+          <Typography>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Error minus repellat iste ipsam repudiandae animi dolore
                     quidem. Ea inventore minima libero, quam cumque molestiae
                     deleniti neque, totam dolores, ab quae?
-                  </TableCell>
-                </TableRow>
+          </Typography>
+        </ExpansionPanelDetails>
+      </ExpansionPanel>
 
-                <TableRow className={classes.tableRow}>
-                  <TableCell>Prescription Drug Safety</TableCell>
-                  <TableCell>
-                    <img
-                      src={selectedAccordionIndex === 3 ? upIcon : downIcon}
-                      onClick={() =>
-                        setSelectedAccordionIndex(
-                          selectedAccordionIndex == 3 ? -1 : 3
-                        )
-                      }
-                    />
-                  </TableCell>
-                </TableRow>
-                <TableRow
-                  style={{
-                    display: selectedAccordionIndex === 3 ? 'block' : 'none',
-                  }}
-                >
-                  <TableCell colSpan={2}>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+       <ExpansionPanel>
+        <ExpansionPanelSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <Typography className={classes.heading}>Prescription Drug Safety</Typography>
+        </ExpansionPanelSummary>
+        <ExpansionPanelDetails>
+          <Typography>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Error minus repellat iste ipsam repudiandae animi dolore
                     quidem. Ea inventore minima libero, quam cumque molestiae
                     deleniti neque, totam dolores, ab quae?
-                  </TableCell>
-                </TableRow>
-              </TableBody>
-            </Table>
+          </Typography>
+        </ExpansionPanelDetails>
+      </ExpansionPanel>
+
           </Grid>
         </Grid>
       </div>
