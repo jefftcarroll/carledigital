@@ -79,9 +79,7 @@ export default function PlanSelect() {
     fetch(`${url}/2020/plans.json`, {})
       .then(resp => resp.json())
       .then(json => {
-        debugger
-        const plans = JSON.parse(json)
-        setSelectedPlans(filterPlans(plans))
+        setSelectedPlans(filterPlans(json))
       })
   }, [])
 
