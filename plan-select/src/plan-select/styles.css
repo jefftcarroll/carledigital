@@ -59,3 +59,11 @@ h3.provider {
 .hmo.price {
   color: #572c80;
 }
+
+.wrapper {
+  width: 1000px;
+  margin: 0 auto;
+  overflow-x: auto;
+  margin-right: auto;
+  margin-left: auto;
+}

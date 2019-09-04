@@ -34,6 +34,9 @@ require('es6-promises')
 // https://www.figma.com/proto/J9Gdebpcb3grmnjchfc3Rm9F/Simplete-Website?node-id=340%3A5325&viewport=857%2C397%2C0.16888083517551422&scaling=min-zoom
 
 const useStyles = makeStyles(theme => ({
+  root: {
+    flexGrow: 1,
+  },
   topButton: {
     marginTop: theme.spacing(3),
     marginBottom: theme.spacing(3),
@@ -90,6 +93,7 @@ export default function PlanSelect() {
 
   return (
     <Theme>
+      <div className={`${classes.root} wrapper`}>
       <Table className={classes.table}>
         <TableHead>
           <TableRow>
@@ -433,6 +437,7 @@ export default function PlanSelect() {
           />
         </TableBody>
       </Table>
+      </div>
     </Theme>
   )
 }
