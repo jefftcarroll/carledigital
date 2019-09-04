@@ -71,12 +71,7 @@ export default function PlanSelect() {
   const [selectedPlans, setSelectedPlans] = useState([])
 
   useEffect(() => {
-    const url =
-      process.env && process.env.REACT_APP_JSON_HOST
-        ? process.env.REACT_APP_JSON_HOST
-        : window.location.host
-
-    fetch(`${url}/2020/plans.json`, {})
+    fetch(`//${window.location.host}/2020/plans.json`, {})
       .then(resp => resp.json())
       .then(json => {
         setSelectedPlans(filterPlans(json))

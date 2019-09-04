@@ -173,16 +173,11 @@ export default function PlanDetail() {
   }
 
   useEffect(() => {
-    const url =
-      process.env && process.env.REACT_APP_JSON_HOST
-        ? process.env.REACT_APP_JSON_HOST
-        : window.location.host
-
-    fetch(`${url}/2020/plans.json`, {})
+   fetch(`//${window.location.host}/2020/plans.json`, {})
       .then(resp => resp.json())
       .then(json => {
         const q = queryString.parse(window.location.search)
-        const _plan = JSON.parse(json).find(plan => q.plan === plan.ID)
+        const _plan = json.find(plan => q.plan === plan.ID)
         setPlan(_plan)
       })
   }, [])
