@@ -35,6 +35,11 @@ td {
   font-size: 16px;
 }
 
+table th {
+  text-align: left !important;
+  padding-left: 0px;
+}
+
 section {
   height: auto;
 }
