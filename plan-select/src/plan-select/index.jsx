@@ -52,7 +52,7 @@ const useStyles = makeStyles(theme => ({
     marginTop: theme.spacing.unit * 3,
     overflowX: 'auto',
   },
-  thead: {
+  fixed: {
     backgroundColor: '#fff',
     position: 'sticky',
     top: 0,
@@ -94,7 +94,7 @@ export default function PlanSelect() {
         <TableHead>
           <TableRow>
             {selectedPlans.map(plan => (
-              <TableCell key={plan.ID} className={classes.thead}>
+              <TableCell key={plan.ID} className={classes.fixed}>
                 <Button
                   variant="contained"
                   color="primary"

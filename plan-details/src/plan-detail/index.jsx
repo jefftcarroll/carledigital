@@ -92,9 +92,9 @@ const useStyles = makeStyles(theme => ({
     fontSize: theme.typography.pxToRem(15),
     fontWeight: theme.typography.fontWeightRegular,
   },
-  sticky: {
+  fixed: {
     backgroundColor: '#fff',
-    position: 'sticky',
+    position: 'fixed',
     top: 0,
     zIndex: 100,
   },
@@ -186,7 +186,7 @@ export default function PlanDetail() {
     <Theme>
       <div className={`${classes.root} wrapper`}>
         <ScrollableAnchor id="section_top">
-          <div className={`${classes.sticky} tabs`}>
+          <div className={`${classes.fixed} tabs`}>
             <Tabs
               value={selectedTabIndex}
               onChange={(e, index) => setSelectedTabIndex(index)}
