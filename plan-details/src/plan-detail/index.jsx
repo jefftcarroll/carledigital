@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import queryString from 'query-string'
 
-import ScrollableAnchor from 'react-scrollable-anchor'
+import ScrollableAnchor,  { configureAnchors }  from 'react-scrollable-anchor'
+
 import {
   Tab,
   Tabs,
@@ -169,11 +170,13 @@ export default function PlanDetail() {
 
   function getShopView() {
     const q = queryString.parse(window.location.search)
-    return q.page
+    return q.page || ""
   }
 
   useEffect(() => {
-   fetch(`//${window.location.host}/2020/plans.json`, {})
+    configureAnchors({offset: -100, scrollDuration: 200})
+
+    fetch(`//${window.location.host}/2020/plans.json`, {})
       .then(resp => resp.json())
       .then(json => {
         const q = queryString.parse(window.location.search)
@@ -228,9 +231,9 @@ export default function PlanDetail() {
                 <TableRow className={classes.tableRow}>
                   <TableCell>Yearly Out-of-Pocket Max</TableCell>
                   <TableCell>
-                    <p>Tier 1: {plan.LIMIT_t1}</p>
-                    <p>Tier 2: {plan.LIMIT_t2 || 'NA'}</p>
-                    <p>Out of Network: {plan.LIMIT_oon || 'NA'}</p>
+                    <p>{plan.LIMIT_t1}</p>
+                    {/*<p>Tier 2: {plan.LIMIT_t2 || 'NA'}</p>*/}
+                    {/*<p>Out of Network: {plan.LIMIT_oon || 'NA'}</p>*/}
                   </TableCell>
                 </TableRow>
               </TableBody>
@@ -256,6 +259,7 @@ export default function PlanDetail() {
           </Grid>
 
           <Grid item xs={12} sm={12} md={4}>
+
             <Paper className={classes.specialNote}>
               {getShopView().toLowerCase() === 'shop' ? <Shop /> : <View />}
             </Paper>
@@ -379,18 +383,20 @@ export default function PlanDetail() {
                     ))}
                   </TableCell>
                   <TableCell>
-                    {plan.INHOSP_t2.map(item => (
+                    {plan.INHOSP_t2.length > 0
+                      ? plan.INHOSP_t2.map(item => (
                       <div>
                         <nobr>{item}</nobr>
                       </div>
-                    ))}
+                    )) : "N/A"}
                   </TableCell>
                   <TableCell>
-                    {plan.INHOSP_oon.map(item => (
+                    {plan.INHOSP_oon.length > 0
+                      ? plan.INHOSP_oon.map(item => (
                       <div>
                         <nobr>{item}</nobr>
                       </div>
-                    ))}
+                    )) : "N/A"}
                   </TableCell>
                 </TableRow>
 
@@ -407,18 +413,20 @@ export default function PlanDetail() {
                     ))}
                   </TableCell>
                   <TableCell>
-                    {plan.SNF_t2.map(item => (
+                    {plan.SNF_t2.length > 0
+                      ? plan.SNF_t2.map(item => (
                       <div>
                         <nobr>{item}</nobr>
                       </div>
-                    ))}
+                    )) : "N/A"}
                   </TableCell>
                   <TableCell>
-                    {plan.SNF_oon.map(item => (
+                    {plan.SNF_oon.length > 0
+                      ? plan.SNF_oon.map(item => (
                       <div>
                         <nobr>{item}</nobr>
                       </div>
-                    ))}
+                    )) : "N/A"}
                   </TableCell>
                 </TableRow>
               </TableBody>
