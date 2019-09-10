@@ -7,5 +7,5 @@ This will install any dependencies and run the app with a dev server on port 300
 
 Finally, browse the app
 
-plan-select: http://localhost:3000/?plan1=M3R&plan2=M3S&plan3=M3T
-plan-details: http://localhost:3000/?plan=M3R&page=shop
+plan-select: http://localhost:3000/?plan1=H1463-023-000&plan2=H1463-024-000&plan3=H1463-025-000
+plan-details: http://localhost:3000/?plan=H1463-025-000&page=shop
