@@ -555,77 +555,50 @@ export default function PlanDetail() {
           </Grid>
 
           <Grid item xs={12} sm={12} md={8}>
-<ExpansionPanel>
-        <ExpansionPanelSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-        >
-          <Typography className={classes.heading}>Extra Help Paying for Prescriptions</Typography>
-        </ExpansionPanelSummary>
-        <ExpansionPanelDetails>
-          <Typography>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Error minus repellat iste ipsam repudiandae animi dolore
-                    quidem. Ea inventore minima libero, quam cumque molestiae
-                    deleniti neque, totam dolores, ab quae?
-          </Typography>
-        </ExpansionPanelDetails>
-      </ExpansionPanel>
+          <>
+            <p>&nbsp;</p>
+            <p>You might be able to get extra help paying for your prescription drug premiums and costs.</p>
+            <p><a id="ExtraHelp" title="Extra Help" href="#" onclick="__ko16.openArticle('https://simplete.knowledgeowl.com/help/low-income-subsidy-lis-info');return false;">Extra Help</a></p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+          </>
 
-      <ExpansionPanel>
-        <ExpansionPanelSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-        >
-          <Typography className={classes.heading}>Preauthorization &amp; Clinical Guidelines</Typography>
-        </ExpansionPanelSummary>
-        <ExpansionPanelDetails>
-          <Typography>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Error minus repellat iste ipsam repudiandae animi dolore
-                    quidem. Ea inventore minima libero, quam cumque molestiae
-                    deleniti neque, totam dolores, ab quae?
-          </Typography>
-        </ExpansionPanelDetails>
-      </ExpansionPanel>
+          <>
+            <p>Certain services and drugs require preauthorization, or approval of a drug or medical procedure before you get it.</p>
+            <p><a href="">Preauthorization Guidelines</a></p>
+            <p>&nbsp;</p>
+            <p>Providers should request preauthorizations through <a href="https://www.healthalliance.org/Providers/Preauthorizations">Your Health Alliance</a>.</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+          </>
 
-      <ExpansionPanel>
-        <ExpansionPanelSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-        >
-          <Typography className={classes.heading}>High Risk Medications</Typography>
-        </ExpansionPanelSummary>
-        <ExpansionPanelDetails>
-          <Typography>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Error minus repellat iste ipsam repudiandae animi dolore
-                    quidem. Ea inventore minima libero, quam cumque molestiae
-                    deleniti neque, totam dolores, ab quae?
-          </Typography>
-        </ExpansionPanelDetails>
-      </ExpansionPanel>
+          <>
+            <p>Find high-risk medications for the elderly and alternative treatments.</p>
+            <p><a href="https://medicare.healthalliance.org/media/Resources/ph-HAQlhiriskmedflr.pdf">High-Risk Medication Chart</a></p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+          </>
 
-       <ExpansionPanel>
-        <ExpansionPanelSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-        >
-          <Typography className={classes.heading}>Prescription Drug Safety</Typography>
-        </ExpansionPanelSummary>
-        <ExpansionPanelDetails>
-          <Typography>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Error minus repellat iste ipsam repudiandae animi dolore
-                    quidem. Ea inventore minima libero, quam cumque molestiae
-                    deleniti neque, totam dolores, ab quae?
-          </Typography>
-        </ExpansionPanelDetails>
-      </ExpansionPanel>
+          <>
+            <p>Use this program for help taking multiple medications safely and effectively.</p>
+            <p><a id="MTM" title="Medication Therapy Management" href="#" onclick="__ko16.openArticle('https://simplete.knowledgeowl.com/help/medication-therapy-management');return false;">Medication Therapy Management</a></p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+          </>
+
+          <>
+            <p>Find which drugs have special rules or limits to keep you safe.</p>
+            <p><a id="SDR" title="Specific Drug Requirements" href="#" onclick="__ko16.openArticle('https://simplete.knowledgeowl.com/help/specific-drug-requirements');return false;">Specific Drug Requirements</a></p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+          </>
+
+          <>
+            <p>Get details on how we'll help you switch to drugs we cover.</p>
+            <p><a id="SDR" title="Medicare Part D Transition Process" href="#" onclick="__ko16.openArticle('https://simplete.knowledgeowl.com/help/medicare-part-d-transition-process');return false;">Medicare Part D Transition Process</a></p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+          </>
 
           </Grid>
         </Grid>
