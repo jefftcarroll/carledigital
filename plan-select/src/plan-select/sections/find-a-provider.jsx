@@ -7,16 +7,16 @@ export default function Names({ plans }) {
     <TableRow>
       {plans.map(plan => (
         <TableCell key={plan.ID} className="section">
-          <h3>
+          <h4>
             <a
               href={
-                `https://simplete.org/find-care?directory=${plan.DIRECTORY}`
+                `https://medicare.healthalliance.org/find-care`
               }
             >
               Find a Provider
             </a>{' '}
             in {plan.NAME}
-          </h3>
+          </h4>
         </TableCell>
       ))}
     </TableRow>

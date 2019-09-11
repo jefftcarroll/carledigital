@@ -9,7 +9,7 @@ export default function SubNames({ plans }) {
         <TableCell key={plan.ID} className="section no-bottom-border">
           <div className="flex-container">
             <div className="left">{plan.SUBNAME}</div>
-            <div className="right purple">{plan.PREMIUM}/month</div>
+            <div className="right plum">{plan.PREMIUM}/month</div>
           </div>
         </TableCell>
       ))}

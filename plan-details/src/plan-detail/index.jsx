@@ -96,8 +96,9 @@ const useStyles = makeStyles(theme => ({
   fixed: {
     backgroundColor: '#fff',
     position: 'fixed',
-    top: 0,
-    zIndex: 100,
+    top: '96px',
+    zIndex: 1,
+    width: '100%',
   },
 }))
 
@@ -107,7 +108,7 @@ function Shop({}) {
       <h3>How to Enroll</h3>
       <p>
         2020 Annual Enrollment starts Oct 15th. To enroll now you must qualify
-        for a <a href="">Special Enrollment Period</a>.
+        for a <a href="https://help.simplete.org/help/special-enrollment-periods">Special Enrollment Period</a>.
       </p>
       <div>
         <Button variant="contained" color="primary">
@@ -117,7 +118,7 @@ function Shop({}) {
 
       <p>
         Our plans are only available in certain places. Make sure you live in
-        our <a href="">service area</a>.
+        our <a href="https://help.simplete.org/help/in-what-service-areas-are-plans-offered">service area</a>.
       </p>
     </>
   )
@@ -127,35 +128,34 @@ function View({}) {
   return (
     <>
       <h3>Take charge of your health</h3>
-      <ul>
+      <ul class="checkmarks">
         <li>
-          <a href="">Log in</a> to your member account to manage more plan
+          <a href="https://www.healthalliance.org/Account/Login">Log in</a> to your member account to manage more plan
           details
         </li>
         <li>
-          Download the <a href="">app</a>
+          Download the app <a href="https://apps.apple.com/us/app/your-health-alliance/id1287645391?ls=1">iOS</a>&nbsp;&nbsp;<a href="https://play.google.com/store/apps/details?id=org.HealthAlliance.MemberApp">Android</a>
         </li>
         <li>
-          Visit with a doctor at 1-888-912-0904 or through the{' '}
-          <a href="">member account</a> or <a href="">app</a>
+          Schedule virtual care with a doctor at 1-888-912-0904 or through the member account or app.
         </li>
         <li>
-          Get $360 for fitness with <a href="">Be Fit</a>
+          Get $360 for fitness with <a href="https://help.simplete.org/help/how-to-get-paid-back-with-be-fit">Be Fit</a>
         </li>
         <li>
-          Earn rewards with <a href="">Rally</a>
+          Earn rewards with <a href="https://www.healthalliance.org/rally">Rally</a>
         </li>
         <li>
-          <a href="">Track wellness activities</a> to earn up to $50
+          <a href="https://help.simplete.org/help/wellness-rewards">Track wellness activities</a> to earn up to $50
         </li>
         <li>
-          Learn how <a href="">care coordination</a> can help you
+          Learn how <a href="https://www.healthalliance.org/care-coordination">care coordination</a> can help you
         </li>
         <li>
-          Traveling healthy with <a href="">Assist America</a>
+          Traveling healthy with <a href="https://www.healthalliance.org/assist-america">Assist America</a>
         </li>
         <li>
-          Save on <a href="">TruHearing Select</a> hearing aids
+          Save on <a href="https://medicare.healthalliance.org/truhearing-select">TruHearing Select</a> hearing aids
         </li>
       </ul>
     </>
@@ -174,7 +174,7 @@ export default function PlanDetail() {
   }
 
   useEffect(() => {
-    configureAnchors({offset: -100, scrollDuration: 200})
+    configureAnchors({offset: -192, scrollDuration: 200})
 
     fetch(`//${window.location.host}/2020/plans.json`, {})
       .then(resp => resp.json())
@@ -189,7 +189,7 @@ export default function PlanDetail() {
     <Theme>
       <div className={`${classes.root} wrapper`}>
         <ScrollableAnchor id="section_top">
-          <div className={`${classes.fixed} tabs`}>
+          <div className={`${classes.fixed} detailtabs`}>
             <Tabs
               value={selectedTabIndex}
               onChange={(e, index) => setSelectedTabIndex(index)}
@@ -443,7 +443,7 @@ export default function PlanDetail() {
                 className={classes.button}
                 variant="outlined"
                 onClick={() =>
-                  (window.location.href = 'https://simplete.org/find-care')
+                  (window.location.href = 'https://medicare.healthalliance.org/find-a-pharmacy')
                 }
               >
                 Find a Pharmacy
@@ -452,10 +452,10 @@ export default function PlanDetail() {
                 className={classes.button}
                 variant="outlined"
                 onClick={() =>
-                  (window.location.href = 'https://simplete.org/find-care')
+                  (window.location.href = 'https://HAMP.destinationrx.com/compare/MDC/2020')
                 }
               >
-                Check Drug Coverage
+                Estimate Drug Cost
               </Button>
             </div>
 

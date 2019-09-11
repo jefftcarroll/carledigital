@@ -58,8 +58,8 @@ const useStyles = makeStyles(theme => ({
   fixed: {
     backgroundColor: '#fff',
     position: 'sticky',
-    top: 0,
-    zIndex: 100,
+    top: '96px',
+    zIndex: 1,
   },
   tsectionhead: {
     border: '0px',
