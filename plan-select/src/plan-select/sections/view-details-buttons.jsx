@@ -9,9 +9,7 @@ export default function ViewDetailsButtons({ plans, classes }) {
       {plans.map(plan => (
         <TableCell key={plan.ID} className="section">
           <Button
-            variant="outlined"
-            color="primary"
-            className={classes.button}
+            class="btn btn-hollow btn-plum"
             onClick={() =>
               (document.location.href = `/benefits/plan-details?plan=${plan.ID}&page=shop`)
             }

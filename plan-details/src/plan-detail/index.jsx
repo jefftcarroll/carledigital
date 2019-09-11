@@ -111,7 +111,7 @@ function Shop({}) {
         for a <a href="https://help.simplete.org/help/special-enrollment-periods">Special Enrollment Period</a>.
       </p>
       <div>
-        <Button variant="contained" color="primary">
+        <Button class="btn">
           Enroll now
         </Button>
       </div>
@@ -240,21 +240,19 @@ export default function PlanDetail() {
             </Table>
 
             <Button
-              variant="outlined"
-              className={classes.button}
+              class="btn btn-hollow"
               onClick={() => (window.location.href = plan.EOC)}
             >
               <img src={pdfIcon} />
-              Evidence of Coverage
+              &nbsp;Evidence of Coverage
             </Button>
 
             <Button
-              variant="outlined"
-              className={classes.button}
+              class="btn btn-hollow"
               onClick={() => (window.location.href = plan.SOB)}
             >
               <img src={pdfIcon} />
-              Summary of Benefits
+              &nbsp;Summary of Benefits
             </Button>
           </Grid>
 
@@ -440,8 +438,7 @@ export default function PlanDetail() {
 
             <div>
               <Button
-                className={classes.button}
-                variant="outlined"
+                class="btn btn-hollow btn-plum"
                 onClick={() =>
                   (window.location.href = 'https://medicare.healthalliance.org/find-a-pharmacy')
                 }
@@ -449,8 +446,7 @@ export default function PlanDetail() {
                 Find a Pharmacy
               </Button>
               <Button
-                className={classes.button}
-                variant="outlined"
+                class="btn btn-hollow btn-plum"
                 onClick={() =>
                   (window.location.href = 'https://HAMP.destinationrx.com/compare/MDC/2020')
                 }
@@ -536,21 +532,19 @@ export default function PlanDetail() {
 
           <Grid item xs={12} sm={12} md={8}>
             <Button
-              variant="outlined"
-              className={classes.button}
+              class="btn btn-hollow"
               onClick={() => (window.location.href = plan.FORMULARY)}
             >
               <img src={pdfIcon} />
-              Drug Formulary
+              &nbsp;Drug Formulary
             </Button>
 
             <Button
-              variant="outlined"
-              className={classes.button}
+              class="btn btn-hollow"
               onClick={() => (window.location.href = plan.RXDIRECTORY)}
             >
               <img src={pdfIcon} />
-              Pharmacy Directory
+              &nbsp;Pharmacy Directory
             </Button>
           </Grid>
         </Grid>
