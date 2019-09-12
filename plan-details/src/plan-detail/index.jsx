@@ -15,6 +15,7 @@ import {
   Grid,
   Paper,
   Button,
+  Box,
   Icon,
   Card,
   CardHeader,
@@ -239,21 +240,24 @@ export default function PlanDetail() {
               </TableBody>
             </Table>
 
-            <Button
-              class="btn btn-hollow"
-              onClick={() => (window.location.href = plan.EOC)}
-            >
-              <img src={pdfIcon} />
-              &nbsp;Evidence of Coverage
-            </Button>
+            <Box mt={2}>
+              <Button
+                class="btn btn-hollow"
+                onClick={() => (window.location.href = plan.EOC)}
+              >
+                <img src={pdfIcon} />
+                &nbsp;Evidence of Coverage
+              </Button>
 
-            <Button
-              class="btn btn-hollow"
-              onClick={() => (window.location.href = plan.SOB)}
-            >
-              <img src={pdfIcon} />
-              &nbsp;Summary of Benefits
-            </Button>
+              <Button
+                class="btn btn-hollow"
+                onClick={() => (window.location.href = plan.SOB)}
+              >
+                <img src={pdfIcon} />
+                &nbsp;Summary of Benefits
+              </Button>
+            </Box>
+
           </Grid>
 
           <Grid item xs={12} sm={12} md={4}>
@@ -437,22 +441,24 @@ export default function PlanDetail() {
             </ScrollableAnchor>
 
             <div>
-              <Button
-                class="btn btn-hollow btn-plum"
-                onClick={() =>
-                  (window.location.href = 'https://medicare.healthalliance.org/find-a-pharmacy')
-                }
-              >
-                Find a Pharmacy
-              </Button>
-              <Button
-                class="btn btn-hollow btn-plum"
-                onClick={() =>
-                  (window.location.href = 'https://HAMP.destinationrx.com/compare/MDC/2020')
-                }
-              >
-                Estimate Drug Cost
-              </Button>
+              <Box mt={2} mb={2}>
+                <Button
+                  class="btn btn-hollow btn-plum"
+                  onClick={() =>
+                    (window.location.href = 'https://medicare.healthalliance.org/find-a-pharmacy')
+                  }
+                >
+                  Find a Pharmacy
+                </Button>
+                <Button
+                  class="btn btn-hollow btn-plum"
+                  onClick={() =>
+                    (window.location.href = 'https://HAMP.destinationrx.com/compare/MDC/2020')
+                  }
+                >
+                  Estimate Drug Cost
+                </Button>
+              </Box>
             </div>
 
             <Card className={classes.card}>
@@ -531,21 +537,23 @@ export default function PlanDetail() {
           </Grid>
 
           <Grid item xs={12} sm={12} md={8}>
-            <Button
-              class="btn btn-hollow"
-              onClick={() => (window.location.href = plan.FORMULARY)}
-            >
-              <img src={pdfIcon} />
-              &nbsp;Drug Formulary
-            </Button>
+            <Box mt={2} mb={3}>
+              <Button
+                class="btn btn-hollow"
+                onClick={() => (window.location.href = plan.FORMULARY)}
+              >
+                <img src={pdfIcon} />
+                &nbsp;Drug Formulary
+              </Button>
 
-            <Button
-              class="btn btn-hollow"
-              onClick={() => (window.location.href = plan.RXDIRECTORY)}
-            >
-              <img src={pdfIcon} />
-              &nbsp;Pharmacy Directory
-            </Button>
+              <Button
+                class="btn btn-hollow"
+                onClick={() => (window.location.href = plan.RXDIRECTORY)}
+              >
+                <img src={pdfIcon} />
+                &nbsp;Pharmacy Directory
+              </Button>
+            </Box>
           </Grid>
         </Grid>
       </div>
