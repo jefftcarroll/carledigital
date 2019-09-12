@@ -113,10 +113,12 @@ function Shop({}) {
       </p>
       <div>
         <Button class="btn">
-          Enroll now
+          Enroll Online Now
         </Button>
       </div>
-
+      <p>
+        Or enroll <a href="/enroll">by phone, mail, or in person</a>.
+      </p>
       <p>
         Our plans are only available in certain places. Make sure you live in
         our <a href="https://help.simplete.org/help/in-what-service-areas-are-plans-offered">service area</a>.
@@ -242,7 +244,7 @@ export default function PlanDetail() {
 
             <Box mt={2}>
               <Button
-                class="btn btn-hollow"
+                class="btn btn-hollow valign-wrapper"
                 onClick={() => (window.location.href = plan.EOC)}
               >
                 <img src={pdfIcon} />
@@ -250,7 +252,7 @@ export default function PlanDetail() {
               </Button>
 
               <Button
-                class="btn btn-hollow"
+                class="btn btn-hollow valign-wrapper"
                 onClick={() => (window.location.href = plan.SOB)}
               >
                 <img src={pdfIcon} />
@@ -539,7 +541,7 @@ export default function PlanDetail() {
           <Grid item xs={12} sm={12} md={8}>
             <Box mt={2} mb={3}>
               <Button
-                class="btn btn-hollow"
+                class="btn btn-hollow valign-wrapper"
                 onClick={() => (window.location.href = plan.FORMULARY)}
               >
                 <img src={pdfIcon} />
@@ -547,7 +549,7 @@ export default function PlanDetail() {
               </Button>
 
               <Button
-                class="btn btn-hollow"
+                class="btn btn-hollow valign-wrapper"
                 onClick={() => (window.location.href = plan.RXDIRECTORY)}
               >
                 <img src={pdfIcon} />
