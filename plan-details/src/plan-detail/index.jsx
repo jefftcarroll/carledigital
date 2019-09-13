@@ -103,7 +103,11 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-function Shop({}) {
+function Shop({ plan }) {
+  function drxlink(link) {
+    const params = queryString.parse(window.location.search)
+    return `${link}&zip=${params.zip}&fips=${params.fips}`
+  }
   return (
     <>
       <h3>How to Enroll</h3>
@@ -112,7 +116,9 @@ function Shop({}) {
         for a <a href="https://help.simplete.org/help/special-enrollment-periods">Special Enrollment Period</a>.
       </p>
       <div>
-        <Button class="btn">
+        <Button class="btn"
+        onClick={() => (document.location.href = drxlink(plan.DRXLINK))}
+        >
           Enroll Online Now
         </Button>
       </div>
@@ -166,6 +172,9 @@ function View({}) {
 }
 
 export default function PlanDetail() {
+  
+  
+
   const classes = useStyles()
   const tabs = ['Overview', 'Medical', 'Pharmacy']
   const [plan, setPlan] = useState(null)
@@ -265,7 +274,7 @@ export default function PlanDetail() {
           <Grid item xs={12} sm={12} md={4}>
 
             <Paper className={classes.specialNote}>
-              {getShopView().toLowerCase() === 'shop' ? <Shop /> : <View />}
+              {getShopView().toLowerCase() === 'shop' ? <Shop plan={plan} /> : <View />}
             </Paper>
           </Grid>
         </Grid>

@@ -70,7 +70,8 @@ const useStyles = makeStyles(theme => ({
 
 export default function PlanSelect() {
   const classes = useStyles()
-
+  const params = queryString.parse(window.location.search)
+  
   const [selectedPlans, setSelectedPlans] = useState([])
 
   useEffect(() => {
@@ -80,6 +81,10 @@ export default function PlanSelect() {
         setSelectedPlans(filterPlans(json))
       })
   }, [])
+
+  function drxlink(link) {
+    return `${link}&zip=${params.zip}&fips=${params.fips}`
+  }
 
   function filterPlans(plans) {
     if (plans.length === 0) return []
@@ -104,7 +109,7 @@ export default function PlanSelect() {
                   color="primary"
                   fullWidth
                   className={classes.topButton}
-                  onClick={() => (document.location.href = plan.DRXLINK)}
+                  onClick={() => (document.location.href = drxlink(plan.DRXLINK))}
                 >
                   Choose {plan.NAME}
                 </Button>
