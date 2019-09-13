@@ -137,10 +137,10 @@ function View({}) {
           details
         </li>
         <li>
-          Download the app <a href="https://apps.apple.com/us/app/your-health-alliance/id1287645391?ls=1">iOS</a>&nbsp;&nbsp;<a href="https://play.google.com/store/apps/details?id=org.HealthAlliance.MemberApp">Android</a>
+          Download the <a href="https://www.simplete.org/app">app</a>
         </li>
         <li>
-          Schedule virtual care with a doctor at 1-888-912-0904 or through the member account or app.
+          Schedule virtual care with a doctor at 1-888-912-0904 or through the <a href="https://www.healthalliance.org/Account/Login">member account</a> or <a href="https://www.simplete.org/app">app</a>
         </li>
         <li>
           Get $360 for fitness with <a href="https://help.simplete.org/help/how-to-get-paid-back-with-be-fit">Be Fit</a>
@@ -158,7 +158,7 @@ function View({}) {
           Traveling healthy with <a href="https://www.healthalliance.org/assist-america">Assist America</a>
         </li>
         <li>
-          Save on <a href="https://medicare.healthalliance.org/truhearing-select">TruHearing Select</a> hearing aids
+          Save on <a href="https://help.simplete.org/help/truhearing-select">TruHearing Select</a> hearing aids
         </li>
       </ul>
     </>
@@ -481,7 +481,7 @@ export default function PlanDetail() {
               <CardContent>
                 Fill a 90-day supply of your Tier 1 medications at $0 and Tier 2
                 and 3 medications for a 2-month copay at Walgreens or other
-                preferred cost-sharing pharmacies. A 90-day supply of your Tier
+                preferred cost-sharing pharmacies or through the mail. A 90-day supply of your Tier
                 1 through 3 medications is available for a 2.5-month copay at
                 our other standard cost-sharing pharmacies. This applies in
                 store or by mail order.
