@@ -3,7 +3,7 @@ import Button from '@material-ui/core/Button'
 import TableRow from '@material-ui/core/TableRow'
 import TableCell from '@material-ui/core/TableCell'
 
-export default function ViewDetailsButtons({ plans, classes }) {
+export default function ViewDetailsButtons({ plans, classes, zip, fips }) {
   return (
     <TableRow>
       {plans.map(plan => (
@@ -11,7 +11,7 @@ export default function ViewDetailsButtons({ plans, classes }) {
           <Button
             class="btn btn-hollow btn-plum"
             onClick={() =>
-              (document.location.href = `/benefits/plan-details?plan=${plan.ID}&page=shop`)
+              (document.location.href = `/benefits/plan-details?plan=${plan.ID}&page=shop&zip=${zip}&fips=${fips}`)
             }
           >
             View Details

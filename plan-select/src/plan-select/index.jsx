@@ -71,7 +71,7 @@ const useStyles = makeStyles(theme => ({
 export default function PlanSelect() {
   const classes = useStyles()
   const params = queryString.parse(window.location.search)
-  
+
   const [selectedPlans, setSelectedPlans] = useState([])
 
   useEffect(() => {
@@ -121,7 +121,7 @@ export default function PlanSelect() {
           <Names plans={selectedPlans} classes={classes} />
           <SubNames plans={selectedPlans} classes={classes} />
           <Descriptions plans={selectedPlans} classes={classes} />
-          <ViewDetailsButtons plans={selectedPlans} classes={classes} />
+          <ViewDetailsButtons plans={selectedPlans} classes={classes} zip={params.zip} fips={params.fips} />
 
           <Heading
             plans={selectedPlans}
