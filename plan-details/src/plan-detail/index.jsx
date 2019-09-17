@@ -139,32 +139,32 @@ function View({}) {
       <h3>Take charge of your health</h3>
       <ul class="checkmarks">
         <li>
-          <a href="https://www.healthalliance.org/Account/Login">Log in</a> to your member account to manage more plan
+          <a href="https://www.healthalliance.org/Account/Login">Log in</a> to your member account for plan.
           details
         </li>
         <li>
-          Download the <a href="https://www.simplete.org/app">app</a>
+          Download the <a href="https://www.simplete.org/app">app</a>.
         </li>
         <li>
-          Schedule virtual care with a doctor at 1-888-912-0904 or through the <a href="https://www.healthalliance.org/Account/Login">member account</a> or <a href="https://www.simplete.org/app">app</a>
+          Schedule virtual care with a doctor at 1-888-912-0904 or through the <a href="https://www.healthalliance.org/Account/Login">member account</a> or <a href="https://www.simplete.org/app">app</a>.
         </li>
         <li>
-          Get $360 for fitness with <a href="https://help.simplete.org/help/how-to-get-paid-back-with-be-fit">Be Fit</a>
+          <a href="https://help.simplete.org/help/how-to-get-paid-back-with-be-fit">Get paid back</a> up to $360 a year at the fitness center of your choice.
         </li>
         <li>
-          Earn rewards with <a href="https://www.healthalliance.org/rally">Rally</a>
+          Set healthy goals and earn rewards with <a href="https://www.healthalliance.org/rally">Rally&reg;</a>.
         </li>
         <li>
-          <a href="https://help.simplete.org/help/wellness-rewards">Track wellness activities</a> to earn up to $50
+          <a href="https://help.simplete.org/help/wellness-rewards">Earn a $50 gift card</a> by completing certain wellness activities.
         </li>
         <li>
-          Learn how <a href="https://www.healthalliance.org/care-coordination">care coordination</a> can help you
+          Learn how <a href="https://www.healthalliance.org/care-coordination">care coordination</a> can help you.
         </li>
         <li>
-          Traveling healthy with <a href="https://www.healthalliance.org/assist-america">Assist America</a>
+          Get prompt medical attention through <a href="https://www.healthalliance.org/assist-america">Assist America</a> when you travel.
         </li>
         <li>
-          Save on <a href="https://help.simplete.org/help/truhearing-select">TruHearing Select</a> hearing aids
+          Save on certain <a href="https://help.simplete.org/help/truhearing-select">TruHearing&reg;</a> hearing aids.
         </li>
       </ul>
     </>
@@ -172,8 +172,8 @@ function View({}) {
 }
 
 export default function PlanDetail() {
-  
-  
+
+
 
   const classes = useStyles()
   const tabs = ['Overview', 'Medical', 'Pharmacy']
