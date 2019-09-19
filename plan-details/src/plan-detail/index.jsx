@@ -262,6 +262,14 @@ export default function PlanDetail() {
 
               <Button
                 class="btn btn-hollow valign-wrapper"
+                onClick={() => (window.location.href = plan.ANOC)}
+              >
+                <img src={pdfIcon} />
+                &nbsp;Annual Notice of Change
+              </Button>              
+
+              <Button
+                class="btn btn-hollow valign-wrapper"
                 onClick={() => (window.location.href = plan.SOB)}
               >
                 <img src={pdfIcon} />
