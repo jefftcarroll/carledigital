@@ -257,16 +257,18 @@ export default function PlanDetail() {
                 onClick={() => (window.location.href = plan.EOC)}
               >
                 <img src={pdfIcon} />
-                &nbsp;Evidence of Coverage
+                &nbsp;{plan.PLANTYPE === 'C' ? "Plan Highlights" :"Evidence of Coverage"}
               </Button>
 
-              <Button
-                class="btn btn-hollow valign-wrapper"
-                onClick={() => (window.location.href = plan.ANOC)}
-              >
-                <img src={pdfIcon} />
-                &nbsp;Annual Notice of Change
-              </Button>              
+              {plan.PLANTYPE === 'C' ? "" :
+                <Button
+                  class="btn btn-hollow valign-wrapper"
+                  onClick={() => (window.location.href = plan.ANOC)}
+                >
+                  <img src={pdfIcon} />
+                  &nbsp;Annual Notice of Change
+                </Button>
+              }
 
               <Button
                 class="btn btn-hollow valign-wrapper"
@@ -281,9 +283,12 @@ export default function PlanDetail() {
 
           <Grid item xs={12} sm={12} md={4}>
 
-            <Paper className={classes.specialNote}>
-              {getShopView().toLowerCase() === 'shop' ? <Shop plan={plan} /> : <View />}
-            </Paper>
+            {plan.PLANTYPE === 'C' ? "" :
+              <Paper className={classes.specialNote}>
+                {getShopView().toLowerCase() === 'shop' ? <Shop plan={plan} /> : <View />}
+              </Paper>
+            }
+
           </Grid>
         </Grid>
 
@@ -421,35 +426,38 @@ export default function PlanDetail() {
                   </TableCell>
                 </TableRow>
 
-                <TableRow className={classes.tableRow}>
-                  <TableCell>
-                    Skilled Nursing Facility <br /> Noncustodial care based on
-                    medical necessity
-                  </TableCell>
-                  <TableCell>
-                    {plan.SNF_t1.map(item => (
-                      <div>
-                        <nobr>{item}</nobr>
-                      </div>
-                    ))}
-                  </TableCell>
-                  <TableCell>
-                    {plan.SNF_t2.length > 0
-                      ? plan.SNF_t2.map(item => (
-                      <div>
-                        <nobr>{item}</nobr>
-                      </div>
-                    )) : "N/A"}
-                  </TableCell>
-                  <TableCell>
-                    {plan.SNF_oon.length > 0
-                      ? plan.SNF_oon.map(item => (
-                      <div>
-                        <nobr>{item}</nobr>
-                      </div>
-                    )) : "N/A"}
-                  </TableCell>
-                </TableRow>
+                {plan.PLANTYPE === 'C' ? "" :
+                  <TableRow className={classes.tableRow}>
+                    <TableCell>
+                      Skilled Nursing Facility <br /> Noncustodial care based on
+                      medical necessity
+                    </TableCell>
+                    <TableCell>
+                      {plan.SNF_t1.map(item => (
+                        <div>
+                          <nobr>{item}</nobr>
+                        </div>
+                      ))}
+                    </TableCell>
+                    <TableCell>
+                      {plan.SNF_t2.length > 0
+                        ? plan.SNF_t2.map(item => (
+                        <div>
+                          <nobr>{item}</nobr>
+                        </div>
+                      )) : "N/A"}
+                    </TableCell>
+                    <TableCell>
+                      {plan.SNF_oon.length > 0
+                        ? plan.SNF_oon.map(item => (
+                        <div>
+                          <nobr>{item}</nobr>
+                        </div>
+                      )) : "N/A"}
+                    </TableCell>
+                  </TableRow>
+                }
+
               </TableBody>
             </Table>
           </Grid>
@@ -461,49 +469,71 @@ export default function PlanDetail() {
 
             <div>
               <Box mt={2} mb={2}>
+
+                {plan.PLANTYPE === 'C' ?
                 <Button
                   class="btn btn-hollow btn-plum"
                   onClick={() =>
-                    (window.location.href = 'https://medicare.healthalliance.org/find-a-pharmacy')
+                    (window.location.href = 'https://healthalliance.org/find-a-pharmacy')
                   }
                 >
                   Find a Pharmacy
                 </Button>
-                <Button
-                  class="btn btn-hollow btn-plum"
-                  onClick={() =>
-                    (window.location.href = 'https://HAMP.destinationrx.com/compare/MDC/2020')
-                  }
-                >
-                  Estimate Drug Cost
-                </Button>
+                :
+                  <Button
+                    class="btn btn-hollow btn-plum"
+                    onClick={() =>
+                      (window.location.href = 'https://medicare.healthalliance.org/find-a-pharmacy')
+                    }
+                  >
+                    Find a Pharmacy
+                  </Button>
+                }
+
+
+                {plan.PLANTYPE === 'C' ? "" :
+                  <Button
+                    class="btn btn-hollow btn-plum"
+                    onClick={() =>
+                      (window.location.href = 'https://HAMP.destinationrx.com/compare/MDC/2020')
+                    }
+                  >
+                    Estimate Drug Cost
+                  </Button>
+                }
+
               </Box>
             </div>
 
-            <Card className={classes.card}>
-              <CardHeader
-                className={classes.cardHeader}
-                title="$0 Tier 1 Generics"
-              />
-              <CardContent>
-                You can get Tier 1 generic drugs for $0 when you fill your
-                prescription at Walgreens or other preferred pharmacies. You can
-                also get drugs at other standard network pharmacies for a low
-                cost.
-              </CardContent>
-            </Card>
+            {plan.PLANTYPE === 'C' ? "" :
+              <Card className={classes.card}>
+                <CardHeader
+                  className={classes.cardHeader}
+                  title="$0 Tier 1 Generics"
+                />
+                <CardContent>
+                  You can get Tier 1 generic drugs for $0 when you fill your
+                  prescription at Walgreens or other preferred pharmacies. You can
+                  also get drugs at other standard network pharmacies for a low
+                  cost.
+                </CardContent>
+              </Card>
+            }
 
-            <Card className={classes.card}>
-              <CardHeader className={classes.cardHeader} title="Retail 90" />
-              <CardContent>
-                Fill a 90-day supply of your Tier 1 medications at $0 and Tier 2
-                and 3 medications for a 2-month copay at Walgreens or other
-                preferred cost-sharing pharmacies or through the mail. A 90-day supply of your Tier
-                1 through 3 medications is available for a 2.5-month copay at
-                our other standard cost-sharing pharmacies. This applies in
-                store or by mail order.
-              </CardContent>
-            </Card>
+            {plan.PLANTYPE === 'C' ? "" :
+              <Card className={classes.card}>
+                <CardHeader className={classes.cardHeader} title="Retail 90" />
+                <CardContent>
+                  Fill a 90-day supply of your Tier 1 medications at $0 and Tier 2
+                  and 3 medications for a 2-month copay at Walgreens or other
+                  preferred cost-sharing pharmacies or through the mail. A 90-day supply of your Tier
+                  1 through 3 medications is available for a 2.5-month copay at
+                  our other standard cost-sharing pharmacies. This applies in
+                  store or by mail order.
+                </CardContent>
+              </Card>
+            }
+
 
             <div className={classes.note}>
               Prices listed are for 30-day retail. If there is a lower-priced
@@ -520,12 +550,14 @@ export default function PlanDetail() {
                   <TableCell>{plan.RXDEDUCTIBLE}</TableCell>
                 </TableRow>
 
-                <TableRow className={classes.tableRow}>
-                  <TableCell>
-                    Tier 1 Preferred Generic at Preferred Pharmacy
-                  </TableCell>
-                  <TableCell>{plan.RXPRE_t1}</TableCell>
-                </TableRow>
+                {plan.PLANTYPE === 'C' ? "" :
+                  <TableRow className={classes.tableRow}>
+                    <TableCell>
+                      Tier 1 Preferred Generic at Preferred Pharmacy
+                    </TableCell>
+                    <TableCell>{plan.RXPRE_t1}</TableCell>
+                  </TableRow>
+                }
 
                 <TableRow className={classes.tableRow}>
                   <TableCell>Tier 1 Preferred Generic</TableCell>
@@ -551,6 +583,27 @@ export default function PlanDetail() {
                   <TableCell>Tier 5 Specialty</TableCell>
                   <TableCell>{plan.RX_t5}</TableCell>
                 </TableRow>
+
+                {plan.PLANTYPE === 'M' ? "" :
+                  <TableRow className={classes.tableRow}>
+                    <TableCell>
+                      Non-Preferred Specialty
+                    </TableCell>
+                    <TableCell>{plan.RX_t6}</TableCell>
+                  </TableRow>
+                }
+
+                {plan.PLANTYPE === 'M' ? "" :
+                  <TableRow className={classes.tableRow}>
+                    <TableCell>
+                      Medical Drugs
+                    </TableCell>
+                    <TableCell>{plan.RX_t7}</TableCell>
+                  </TableRow>
+                }
+
+
+
               </TableBody>
             </Table>
           </Grid>
