@@ -14,8 +14,7 @@ export default function Names({ plans }) {
               }
             >
               Find a Provider
-            </a>{' '}
-            in {plan.NAME}
+            </a>
           </h4>
         </TableCell>
       ))}

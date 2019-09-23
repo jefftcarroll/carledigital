@@ -38,8 +38,8 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
   },
   topButton: {
-    marginTop: theme.spacing(3),
-    marginBottom: theme.spacing(3),
+    marginTop: theme.spacing(1.5),
+    marginBottom: theme.spacing(1.5),
     paddingTop: theme.spacing(1.5),
     paddingBottom: theme.spacing(1.5),
     boxSizing: 'border-box',
@@ -63,8 +63,8 @@ const useStyles = makeStyles(theme => ({
   },
   tsectionhead: {
     border: '0px',
-    paddingTop: '24px',
-    paddingBottom: '24px',
+    paddingTop: '12px',
+    paddingBottom: '12px',
   },
 }))
 
@@ -105,10 +105,8 @@ export default function PlanSelect() {
             {selectedPlans.map(plan => (
               <TableCell key={plan.ID} className={classes.fixed}>
                 <Button
-                  variant="contained"
-                  color="primary"
                   fullWidth
-                  className={classes.topButton}
+                  class="btn expanded btn-plum"
                   onClick={() => (document.location.href = drxlink(plan.DRXLINK))}
                 >
                   Choose {plan.NAME}
