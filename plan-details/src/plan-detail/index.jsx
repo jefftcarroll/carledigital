@@ -13,30 +13,23 @@ import {
   TableRow,
   TableCell,
   Grid,
+  Icon,
   Paper,
   Button,
   Box,
-  Icon,
   Card,
   CardHeader,
   CardContent,
-  Typography,
-  ExpansionPanel,
-  ExpansionPanelSummary,
-  ExpansionPanelDetails,
-} from '@material-ui/core'
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 
-import pdfIcon from './pdf-24.png'
-import downIcon from './down-24.png'
-import upIcon from './up-24.png'
+} from '@material-ui/core'
+
+import DescriptionOutlinedIcon from '@material-ui/icons/DescriptionOutlined';
 
 import './styles.css'
 import Theme from '../theme'
 
 import fetch from 'isomorphic-fetch'
 require('es6-promises')
-
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -77,7 +70,7 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(3),
   },
   cardHeader: {
-    backgroundColor: '#572C80',
+    backgroundColor: '#422983',
     padding: theme.spacing(3),
     color: '#ffffff',
   },
@@ -101,6 +94,16 @@ const useStyles = makeStyles(theme => ({
     zIndex: 1,
     width: '100%',
   },
+  leftIcon: {
+      marginRight: theme.spacing(1),
+    },
+  rightIcon: {
+      marginLeft: theme.spacing(1),
+    },
+  iconSmall: {
+        fontSize: 16,
+      },
+
 }))
 
 function Shop({ plan }) {
@@ -203,14 +206,14 @@ export default function PlanDetail() {
         <ScrollableAnchor id="section_top">
           <div className={`${classes.fixed} detailtabs`}>
             <Tabs
-              value={selectedTabIndex}
-              onChange={(e, index) => setSelectedTabIndex(index)}
               indicatorColor="primary"
               textColor="primary"
+              value={selectedTabIndex}
+              onChange={(e, index) => setSelectedTabIndex(index)}
             >
               {tabs.map((label, i) => (
                 <a href={`#section_${i}`}>
-                  <Tab label={label} className={classes.topButton} />
+                  <Tab label={label} />
                 </a>
               ))}
             </Tabs>
@@ -253,29 +256,31 @@ export default function PlanDetail() {
 
             <Box mt={2}>
               <Button
-                class="btn btn-hollow valign-wrapper"
+                class="btn btn-hollow"
+                variant="contained"
                 onClick={() => (window.location.href = plan.EOC)}
               >
-                <img src={pdfIcon} />
-                &nbsp;{plan.PLANTYPE === 'C' ? "Plan Highlights" :"Evidence of Coverage"}
+                <DescriptionOutlinedIcon fontSize="small"/>
+                {plan.PLANTYPE === 'C' ? "Plan Highlights" :"Evidence of Coverage"}
               </Button>
 
               {plan.PLANTYPE === 'C' ? "" :
                 <Button
-                  class="btn btn-hollow valign-wrapper"
+                  class="btn btn-hollow"
+                  variant="contained"
                   onClick={() => (window.location.href = plan.ANOC)}
                 >
-                  <img src={pdfIcon} />
-                  &nbsp;Annual Notice of Change
+                  <DescriptionOutlinedIcon fontSize="small"/>
+                  Annual Notice of Change
                 </Button>
               }
 
               <Button
-                class="btn btn-hollow valign-wrapper"
+                class="btn btn-hollow"
                 onClick={() => (window.location.href = plan.SOB)}
               >
-                <img src={pdfIcon} />
-                &nbsp;Summary of Benefits
+                <DescriptionOutlinedIcon fontSize="small"/>
+                Summary of Benefits
               </Button>
             </Box>
 
@@ -295,7 +300,7 @@ export default function PlanDetail() {
         <Grid container>
           <Grid item xs={12} sm={12} md={8}>
             <ScrollableAnchor id="section_1">
-              <h2>Medical Benefits</h2>
+              <h2 class="spacing-top">Medical Benefits</h2>
             </ScrollableAnchor>
             <p>
               This is an overview of what you pay for commonly used benefits $ =
@@ -464,7 +469,7 @@ export default function PlanDetail() {
 
           <Grid item xs={12} sm={12} md={8}>
             <ScrollableAnchor id="section_2">
-              <h2>Drug and Pharmacy Benefits </h2>
+              <h2 class="spacing-top">Drug and Pharmacy Benefits </h2>
             </ScrollableAnchor>
 
             <div>
@@ -611,19 +616,19 @@ export default function PlanDetail() {
           <Grid item xs={12} sm={12} md={8}>
             <Box mt={2} mb={3}>
               <Button
-                class="btn btn-hollow valign-wrapper"
+                class="btn btn-hollow"
                 onClick={() => (window.location.href = plan.FORMULARY)}
               >
-                <img src={pdfIcon} />
-                &nbsp;Drug Formulary
+                <DescriptionOutlinedIcon fontSize="small"/>
+                Drug Formulary
               </Button>
 
               <Button
-                class="btn btn-hollow valign-wrapper"
+                class="btn btn-hollow"
                 onClick={() => (window.location.href = plan.RXDIRECTORY)}
               >
-                <img src={pdfIcon} />
-                &nbsp;Pharmacy Directory
+                <DescriptionOutlinedIcon fontSize="small"/>
+                Pharmacy Directory
               </Button>
             </Box>
           </Grid>
