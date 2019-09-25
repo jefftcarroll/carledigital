@@ -44,13 +44,6 @@ const useStyles = makeStyles(theme => ({
     fontSize: '16px',
     fontWeight: 'bold',
   },
-  button: {
-    textTransform: 'none',
-    margin: theme.spacing(2),
-    marginLeft: 0,
-    boxShadow: 'none',
-    border: '1px solid #e3e3e3',
-  },
   table: {
     width: '100%',
     marginTop: theme.spacing.unit * 3,
@@ -256,8 +249,7 @@ export default function PlanDetail() {
 
             <Box mt={2}>
               <Button
-                class="btn btn-hollow"
-                variant="contained"
+                class="btn btn-hollow btn-plum"
                 onClick={() => (window.location.href = plan.EOC)}
               >
                 <DescriptionOutlinedIcon fontSize="small"/>
@@ -266,8 +258,7 @@ export default function PlanDetail() {
 
               {plan.PLANTYPE === 'C' ? "" :
                 <Button
-                  class="btn btn-hollow"
-                  variant="contained"
+                  class="btn btn-hollow btn-plum"
                   onClick={() => (window.location.href = plan.ANOC)}
                 >
                   <DescriptionOutlinedIcon fontSize="small"/>
@@ -276,7 +267,7 @@ export default function PlanDetail() {
               }
 
               <Button
-                class="btn btn-hollow"
+                class="btn btn-hollow btn-plum"
                 onClick={() => (window.location.href = plan.SOB)}
               >
                 <DescriptionOutlinedIcon fontSize="small"/>
@@ -616,7 +607,7 @@ export default function PlanDetail() {
           <Grid item xs={12} sm={12} md={8}>
             <Box mt={2} mb={3}>
               <Button
-                class="btn btn-hollow"
+                class="btn btn-hollow btn-plum"
                 onClick={() => (window.location.href = plan.FORMULARY)}
               >
                 <DescriptionOutlinedIcon fontSize="small"/>
@@ -624,7 +615,7 @@ export default function PlanDetail() {
               </Button>
 
               <Button
-                class="btn btn-hollow"
+                class="btn btn-hollow btn-plum"
                 onClick={() => (window.location.href = plan.RXDIRECTORY)}
               >
                 <DescriptionOutlinedIcon fontSize="small"/>
