@@ -105,27 +105,30 @@ function Shop({ plan }) {
     return `${link}&zip=${params.zip}&fips=${params.fips}`
   }
   return (
-    <>
-      <h3>How to Enroll</h3>
-      <p>
-        2020 Annual Enrollment starts Oct 15th. To enroll now you must qualify
-        for a <a href="https://help.simplete.org/help/special-enrollment-periods">Special Enrollment Period</a>.
-      </p>
-      <div>
-        <Button class="btn"
-        onClick={() => (document.location.href = drxlink(plan.DRXLINK))}
-        >
-          Enroll Online Now
-        </Button>
-      </div>
-      <p>
-        Or enroll <a href="/enroll">by phone, mail, or in person</a>.
-      </p>
-      <p>
-        Our plans are only available in certain places. Make sure you live in
-        our <a href="https://help.simplete.org/help/in-what-service-areas-are-plans-offered">service area</a>.
-      </p>
-    </>
+      <>
+        <h3>How to Enroll</h3>
+        {plan.SITE === 'medicare' ?
+          <p>
+            2020 Annual Enrollment starts Oct 15th. To enroll now you must qualify
+            for a <a href="/when-to-enroll#SEP">Special Enrollment Period</a>.
+          </p>
+          :
+          <p>
+            2020 Annual Enrollment starts Oct 15th. To enroll now you must qualify
+            for a <a href="https://help.simplete.org/help/special-enrollment-periods">Special Enrollment Period</a>.
+          </p>
+        }
+        <div>
+          <Button class="btn"
+          onClick={() => (document.location.href = drxlink(plan.DRXLINK))}
+          >
+            Enroll Online Now
+          </Button>
+        </div>
+        <p>
+          Or enroll <a href="/enroll">by phone, mail, or in person</a>.
+        </p>
+      </>
   )
 }
 
@@ -196,23 +199,26 @@ export default function PlanDetail() {
   return plan && plan.NAME ? (
     <Theme>
       <div className={`${classes.root} wrapper`}>
-        <ScrollableAnchor id="section_top">
-          <div className={`${classes.fixed} detailtabs`}>
-            <Tabs
-              indicatorColor="primary"
-              textColor="primary"
-              value={selectedTabIndex}
-              onChange={(e, index) => setSelectedTabIndex(index)}
-            >
-              {tabs.map((label, i) => (
-                <a href={`#section_${i}`}>
-                  <Tab label={label} />
-                </a>
-              ))}
-            </Tabs>
-          </div>
-        </ScrollableAnchor>
-
+        {plan.SITE === 'medicare' ?
+          ''
+          :
+            <ScrollableAnchor id="section_top">
+              <div className={`${classes.fixed} detailtabs`}>
+                <Tabs
+                  indicatorColor="primary"
+                  textColor="primary"
+                  value={selectedTabIndex}
+                  onChange={(e, index) => setSelectedTabIndex(index)}
+                >
+                  {tabs.map((label, i) => (
+                    <a href={`#section_${i}`}>
+                      <Tab label={label} />
+                    </a>
+                  ))}
+                </Tabs>
+              </div>
+            </ScrollableAnchor>
+          }
         <Grid container>
           <Grid item xs={12} sm={12} md={8}>
             <ScrollableAnchor id="section_0">
@@ -280,9 +286,16 @@ export default function PlanDetail() {
           <Grid item xs={12} sm={12} md={4}>
 
             {plan.PLANTYPE === 'C' ? "" :
+              <>
               <Paper className={classes.specialNote}>
-                {getShopView().toLowerCase() === 'shop' ? <Shop plan={plan} /> : <View />}
+                {getShopView().toLowerCase() === 'view' ? <View /> : <Shop plan={plan} />}
               </Paper>
+              {plan.SITE === 'medicare' ?
+                <Paper className={classes.specialNote}><p>See all <a href="/perks">Perks and Protections</a>.</p></Paper>
+                :
+                ""
+              }
+              </>
             }
 
           </Grid>
@@ -304,8 +317,12 @@ export default function PlanDetail() {
               <TableHead>
                 <TableRow className={classes.tableRow}>
                   <TableCell></TableCell>
-                  <TableCell>Tier 1</TableCell>
-                  <TableCell>Tier 2</TableCell>
+                  {plan.TYPE === 'HPNC' ?
+                    <TableCell>Tier 1</TableCell>
+                    :
+                    <TableCell></TableCell>
+                  }
+                  <TableCell>{plan.TYPE === 'HPNC' ? "Tier 2":"In Network"}</TableCell>
                   <TableCell>Out of Network</TableCell>
                 </TableRow>
               </TableHead>
@@ -313,7 +330,7 @@ export default function PlanDetail() {
               <TableBody>
                 <TableRow className={classes.tableRow}>
                   <TableCell>Primary Care Physician Office Visit</TableCell>
-                  <TableCell>{plan.PCP_t1 || 'N/A'}</TableCell>
+                  <TableCell>{plan.PCP_t1 || ''}</TableCell>
                   <TableCell>{plan.PCP_t2 || 'N/A'}</TableCell>
                   <TableCell>{plan.PCP_oon || 'N/A'}</TableCell>
                 </TableRow>
@@ -321,7 +338,7 @@ export default function PlanDetail() {
                 <TableRow className={classes.tableRow}>
                   <TableCell>Specialist Office Visit</TableCell>
                   <TableCell>
-                    {plan.SPECIALIST_t1 || 'N/A'}
+                    {plan.SPECIALIST_t1 || ''}
                   </TableCell>
                   <TableCell>
                     {plan.SPECIALIST_t2 || 'N/A'}
@@ -333,35 +350,35 @@ export default function PlanDetail() {
 
                 <TableRow className={classes.tableRow}>
                   <TableCell>Physical Therapy</TableCell>
-                  <TableCell>{plan.PT_t1 || 'N/A'}</TableCell>
+                  <TableCell>{plan.PT_t1 || ''}</TableCell>
                   <TableCell>{plan.PT_t2 || 'N/A'}</TableCell>
                   <TableCell>{plan.PT_oon || 'N/A'}</TableCell>
                 </TableRow>
 
                 <TableRow className={classes.tableRow}>
                   <TableCell>Chiropractic Care</TableCell>
-                  <TableCell>{plan.CHIRO_t1 || 'N/A'}</TableCell>
+                  <TableCell>{plan.CHIRO_t1 || ''}</TableCell>
                   <TableCell>{plan.CHIRO_t2 || 'N/A'}</TableCell>
                   <TableCell>{plan.CHIRO_oon || 'N/A'}</TableCell>
                 </TableRow>
 
                 <TableRow className={classes.tableRow}>
                   <TableCell>Lab</TableCell>
-                  <TableCell>{plan.LAB_t1 || 'N/A'}</TableCell>
+                  <TableCell>{plan.LAB_t1 || ''}</TableCell>
                   <TableCell>{plan.LAB_t2 || 'N/A'}</TableCell>
                   <TableCell>{plan.LAB_oon || 'N/A'}</TableCell>
                 </TableRow>
 
                 <TableRow className={classes.tableRow}>
                   <TableCell>X-Ray</TableCell>
-                  <TableCell>{plan.XRAY_t1 || 'N/A'}</TableCell>
+                  <TableCell>{plan.XRAY_t1 || ''}</TableCell>
                   <TableCell>{plan.XRAY_t2 || 'N/A'}</TableCell>
                   <TableCell>{plan.XRAY_oon || 'N/A'}</TableCell>
                 </TableRow>
 
                 <TableRow className={classes.tableRow}>
                   <TableCell>Ambulance</TableCell>
-                  <TableCell>{plan.AMBULANCE_t1 || 'N/A'}</TableCell>
+                  <TableCell>{plan.AMBULANCE_t1 || ''}</TableCell>
                   <TableCell>{plan.AMBULANCE_t2 || 'N/A'}</TableCell>
                   <TableCell>
                     {plan.AMBULANCE_oon || 'N/A'}
@@ -372,7 +389,7 @@ export default function PlanDetail() {
                   <TableCell>
                     Emergency Care <br /> Emergency care's available worldwide.
                   </TableCell>
-                  <TableCell>{plan.EMERGENCY_t1 || 'N/A'}</TableCell>
+                  <TableCell>{plan.EMERGENCY_t1 || ''}</TableCell>
                   <TableCell>{plan.EMERGENCY_t2 || 'N/A'}</TableCell>
                   <TableCell>
                     {plan.EMERGENCY_oon || 'N/A'}
@@ -381,14 +398,14 @@ export default function PlanDetail() {
 
                 <TableRow className={classes.tableRow}>
                   <TableCell>Urgent/Convenient Care</TableCell>
-                  <TableCell>{plan.URGENT_t1 || 'N/A'}</TableCell>
+                  <TableCell>{plan.URGENT_t1 || ''}</TableCell>
                   <TableCell>{plan.URGENT_t2 || 'N/A'}</TableCell>
                   <TableCell>{plan.URGENT_oon || 'N/A'}</TableCell>
                 </TableRow>
 
                 <TableRow className={classes.tableRow}>
                   <TableCell>Outpatient Hospital Care</TableCell>
-                  <TableCell>{plan.OUTHOSP_t1 || 'N/A'}</TableCell>
+                  <TableCell>{plan.OUTHOSP_t1 || ''}</TableCell>
                   <TableCell>{plan.OUTHOSP_t2 || 'N/A'}</TableCell>
                   <TableCell>{plan.OUTHOSP_oon || 'N/A'}</TableCell>
                 </TableRow>
@@ -458,11 +475,14 @@ export default function PlanDetail() {
             </Table>
           </Grid>
 
+
           <Grid item xs={12} sm={12} md={8}>
             <ScrollableAnchor id="section_2">
               <h2 class="spacing-top">Drug and Pharmacy Benefits </h2>
             </ScrollableAnchor>
 
+            {plan.RX === 'TRUE' ?
+            <>
             <div>
               <Box mt={2} mb={2}>
 
@@ -536,8 +556,16 @@ export default function PlanDetail() {
               deal at the pharmacy than what you’d pay through us, you will get
               the drugs for that lower price.
             </div>
+            </>
+            :
+            <p>
+              This plan does not includes prescription drug coverage.
+            </p>
+            }
           </Grid>
 
+          {plan.RX === 'TRUE' ?
+          <>
           <Grid item xs={12} sm={12} md={8}>
             <Table className={classes.table}>
               <TableBody>
@@ -623,6 +651,10 @@ export default function PlanDetail() {
               </Button>
             </Box>
           </Grid>
+          </>
+          :
+          ""
+        }
         </Grid>
       </div>
     </Theme>
