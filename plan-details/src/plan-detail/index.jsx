@@ -109,13 +109,14 @@ function Shop({ plan }) {
         <h3>How to Enroll</h3>
         {plan.SITE === 'medicare' ?
           <p>
-            2020 Annual Enrollment starts Oct 15th. To enroll now you must qualify
-            for a <a href="/when-to-enroll#SEP">Special Enrollment Period</a>.
+            These plans are effective Jan 1, 2020 - Dec 31, 2020.
+            2020 Annual Enrollment starts Oct 15th.
           </p>
           :
           <p>
+            Plans are effective Jan 1, 2020 - Dec 31, 2020.
             2020 Annual Enrollment starts Oct 15th. To enroll now you must qualify
-            for a <a href="https://help.simplete.org/help/special-enrollment-periods">Special Enrollment Period</a>.
+            for a <a href="https://help.simplete.org/help/special-enrollment-periods">Special Enrollment Period</a>.<br/>
           </p>
         }
         <div>
@@ -128,6 +129,14 @@ function Shop({ plan }) {
         <p>
           Or enroll <a href="/enroll">by phone, mail, or in person</a>.
         </p>
+        {plan.SITE === 'medicare' ?
+          <p>
+            To enroll now you must qualify for a <a href="/when-to-enroll#SEP">Special Enrollment Period</a> 
+            and enroll in the <a href={'/2019/plan-details?plan=' + plan.ID}>2019 Plan</a>.
+          </p>
+          :
+          ""
+        }
       </>
   )
 }
