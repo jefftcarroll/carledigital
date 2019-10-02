@@ -131,8 +131,7 @@ function Shop({ plan }) {
         </p>
         {plan.SITE === 'medicare' ?
           <p>
-            To enroll now you must qualify for a <a href="/when-to-enroll#SEP">Special Enrollment Period</a> 
-            and enroll in the <a href={'/2019/plan-details?plan=' + plan.ID}>2019 Plan</a>.
+            To enroll now you must qualify for a <a href="/when-to-enroll#SEP">Special Enrollment Period</a> and enroll in the <a href={'/2019/plan-details?plan=' + plan.ID}>2019 Plan</a>.
           </p>
           :
           ""
@@ -238,7 +237,7 @@ export default function PlanDetail() {
               <TableBody>
                 <TableRow className={classes.tableRow}>
                   <TableCell>Monthly Premium</TableCell>
-                  <TableCell>{plan.PREMIUM}</TableCell>
+                  <TableCell>{plan.SITE === 'medicare' ? "$":""}{plan.PREMIUM}</TableCell>
                 </TableRow>
 
                 <TableRow className={classes.tableRow}>
@@ -548,14 +547,24 @@ export default function PlanDetail() {
             {plan.PLANTYPE === 'C' ? "" :
               <Card className={classes.card}>
                 <CardHeader className={classes.cardHeader} title="Retail 90" />
-                <CardContent>
-                  Fill a 90-day supply of your Tier 1 medications at $0 and Tier 2
-                  and 3 medications for a 2-month copay at Walgreens or other
-                  preferred cost-sharing pharmacies or through the mail. A 90-day supply of your Tier
-                  1 through 3 medications is available for a 2.5-month copay at
-                  our other standard cost-sharing pharmacies. This applies in
-                  store or by mail order.
-                </CardContent>
+                {plan.PLANLINE === 'simplete' ?
+                  <CardContent>
+                    Fill a 90-day supply of your Tier 1 medications at $0 and Tier 2
+                    and 3 medications for a 2-month copay at Walgreens or other
+                    preferred cost-sharing pharmacies. A 90-day
+                    supply of your Tier 1 through 3 medications is available for a
+                    2.5-month copay at our other standard cost-sharing pharmacies
+                    or by mail order.
+                  </CardContent>
+                  :
+                  <CardContent>
+                    Fill a 90-day supply of your Tier 1 medications at $0 and Tier 2
+                    and 3 medications for a 2.5-month copay at Walgreens or other
+                    preferred cost-sharing pharmacies or by mail order. A 90-day
+                    supply of your Tier 1 through 3 medications is available for a
+                    3-month copay at our other standard cost-sharing pharmacies.
+                  </CardContent>
+                }
               </Card>
             }
 
